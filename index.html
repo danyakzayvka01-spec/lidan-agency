@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIDAN | Smart Business — Автоматизація та ШІ-Рішення</title>
+    <style>
+        /* ПРЕМІУМ МОНОХРОМНИЙ ДИЗАЙН (СТИЛЬ LIDAN) */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ХЕДЕР ТА НАВІГАЦІЯ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            height: 80px;
+        }
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1.1;
+        }
+        .logo span {
+            font-weight: 500;
+            font-size: 10px;
+            letter-spacing: 0.22em; /* Напис тепер щільний та чіткий */
+            display: block;
+            margin-top: 5px;
+            color: #a3a3a3; /* Світліший та контрастніший колір */
+        }
+        nav {
+            display: none;
+        }
+        nav a {
+            color: #666666;
+            text-decoration: none;
+            margin-right: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            color: #ffffff;
+        }
+
+        /* МІНІМАЛІСТИЧНІ КНОПКИ */
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+        .btn-white {
+            background: #ffffff;
+            color: #000000;
+            padding: 14px 32px;
+            border-radius: 99px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .btn-white:hover {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-link {
+            color: #666666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 24px;
+            transition: color 0.3s;
+        }
+        .btn-link:hover {
+            color: #ffffff;
+        }
+
+        /* ГОЛОВНИЙ ЕКРАН */
+        .hero-section {
+            padding: 180px 0 100px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+        .hero-info h1 {
+            font-size: 46px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+        .hero-info p {
+            color: #888888;
+            font-size: 16px;
+            max-width: 520px;
+            margin-bottom: 40px;
+        }
+        .features-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+        }
+        .feat-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #cccccc;
+        }
+        .feat-tag span {
+            color: #444444;
+        }
+
+        /* СТИЛІ СМАРТФОНУ ТА КАРТОЧОК */
+        .phone-frame {
+            width: 100%; max-width: 340px; background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 40px;
+            padding: 16px; box-shadow: 0 40px 100px -30px rgba(255,255,255,0.03); margin: 0 auto;
+        }
+        .phone-screen {
+            background: #050505; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 28px; min-height: 420px; display: flex;
+            flex-direction: column; justify-content: space-between; padding: 16px; font-size: 13px;
+        }
+        .chat-header { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 12px; }
+        .chat-avatar { width: 28px; height: 28px; background: #ffffff; color: #000000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; }
+        #chatBody { flex-grow: 1; display: flex; flex-direction: column; gap: 12px; justify-content: flex-end; padding: 12px 0; overflow: hidden; }
+        .chat-input { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 10px; color: #444444; display: flex; justify-content: space-between; }
+
+        section { padding: 100px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .section-title { max-width: 600px; margin-bottom: 64px; }
+        .section-title h2 { font-size: 38px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 16px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+
+        .pain-card { background: transparent; border: 1px solid rgba(255, 255, 255, 0.08); padding: 40px; border-radius: 20px; transition: border 0.3s; }
+        .pain-card:hover { border-color: rgba(255, 255, 255, 0.25); }
+        .pain-card .num { font-size: 13px; color: #444444; font-family: monospace; margin-bottom: 24px; display: block; }
+        .pain-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .pain-card p { color: #888888; font-size: 14px; }
+
+        .box-wrapper { max-width: 600px; margin: 0 auto; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 48px; background: rgba(255, 255, 255, 0.01); }
+        .slider-group { margin-bottom: 32px; }
+        .slider-group label { display: flex; justify-content: space-between; font-size: 14px; color: #cccccc; margin-bottom: 12px; }
+        input[type="range"] { width: 100%; accent-color: #ffffff; background: rgba(255, 255, 255, 0.1); height: 4px; outline: none; }
+
+        .faq-item { border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 24px 0; cursor: pointer; }
+        .faq-q { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #888888; font-size: 14px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @media (min-width: 768px) { nav { display: block; } .hero-section { grid-template-columns: 1.2fr 0.8fr; align-items: center; } .hero-info h1 { font-size: 56px; } }
+    </style>
+</head>
+<body>
+
+    <!-- НАВІГАЦІЯ -->
+    <header>
+        <div class="container" style="height: 100%;">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">LIDAN<span>SMART BUSINESS</span></a>
+                <nav>
+                    <a href="index.html" class="active">Головна</a>
+                    <a href="services.html">Послуги</a>
+                    <a href="cases.html">Кейси</a>
+                    <a href="contacts.html">Контакти</a>
+                </nav>
+                <div><a href="contacts.html" class="btn-outline">Залишити заявку ➔</a></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГОЛОВНИЙ ЕКРАН -->
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-info">
+                <h1>Бізнес,<br>який працює розумніше</h1>
+                <p>Автоматизація процесів, ШІ-рішення та цифрові інструменти для малого та середнього бізнесу.</p>
+                <div class="features-line">
+                    <div class="feat-tag">✦ ШІ-рішення</div><span>|</span>
+                    <div class="feat-tag">⚙ Автоматизація</div><span>|</span>
+                    <div class="feat-tag">📊 Для бізнесу</div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <a href="contacts.html" class="btn-white">Залишити заявку ➔</a>
+                    <a href="services.html" class="btn-link">Дізнатися більше ➔</a>
+                </div>
+            </div>
+            <!-- Права частина: Симулятор смартфона -->
+            <div class="video-placeholder">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="chat-header">
+                            <div class="chat-avatar">L</div>
+                            <div>
+                                <div style="font-weight: 700; color: #fff;">LIDAN Асистент</div>
+                                <div style="font-size: 10px; color: #34d399; display: flex; align-items: center; gap: 4px;">
+                                    <span style="width: 5px; height: 5px; background: #34d399; border-radius: 50%;"></span>у мережі
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Оновлений контейнер чату із жорсткою фіксацією висоти -->
+                        <div id="chatBody" style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; justify-content: flex-end; padding: 12px 0; height: 300px; max-height: 300px; overflow: hidden;"></div>
+                        <div class="chat-input">
+                            <span>Введіть повідомлення...</span><span style="color: #ffffff;">➔</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК: БОЛІ БІЗНЕСУ -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Чому класичний відділ продажів втрачає прибуток?</h2>
+                <p>Поки менеджери зайняті рутиною або довго обробляють запити — гарячі клієнти йдуть до конкурентів.</p>
+            </div>
+            <div class="grid-3">
+                <div class="pain-card">
+                    <span class="num">// 01</span>
+                    <h3>Довга відповідь у Дірект</h3>
+                    <p>Клієнти у 2026 році не готові чекати годинами. Повільна відповідь знижує конверсію у продажі до 40%.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="num">// 02</span>
+                    <h3>Втрачені нічні замовлення</h3>
+                    <p>Пік активності покупців у соцмережах часто припадає на вечір та ніч. ШІ-агенти закриють угоду 24/7, поки ви відпочиваєте.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="num">// 03</span>
+                    <h3>Рутинні помилки</h3>
+                    <p>Людський фактор неминучий: менеджери втомлюються, плутають ціни, забувають запропонувати доп-товар та не ведуть CRM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: КАЛЬКУЛЯТОР -->
+    <section style="background: #030303;">
+        <div class="container">
+            <div class="section-title" style="margin: 0 auto 48px auto; text-align: center;">
+                <h2>Розрахуйте окупність автоматизації</h2>
+                <p>Дізнайтеся, скільки упущеної вигоди ШІ-асистент зможе повернути у ваш бізнес за місяць.</p>
+            </div>
+            <div class="box-wrapper">
+                <div class="slider-group">
+                    <label><span>Пропущених звернень на день:</span><span id="leadsValue" style="color: #fff; font-weight: 700;">5</span></label>
+                    <input type="range" id="leadsInput" min="1" max="30" value="5">
+                </div>
+                <div class="slider-group">
+                    <label><span>Середній чек вашого продукту:</span><span id="checkValue" style="color: #fff; font-weight: 700;">$30</span></label>
+                    <input type="range" id="checkInput" min="10" max="300" step="5" value="30">
+                </div>
+                <div style="margin-top: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;">
+                    <p style="font-size: 13px; text-transform: uppercase; color: #666666; letter-spacing: 0.05em;">ШІ врятує для вашого бюджету близько:</p>
+                    <div style="font-size: 56px; font-weight: 900; color: #ffffff; margin-top: 10px;">
+                        <span style="font-size: 32px; font-weight: 400; margin-right: 4px;">$</span><span id="resultValue">1350</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: FAQ -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Часті запитання</h2>
+                <p>Відповіді на ключові питання про впровадження штучного інтелекту у бізнес-процессы.</p>
+            </div>
+            <div style="max-width: 750px; margin: 0 auto;">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q"><span>Чи безпечно підключати ШІ до профілю Instagram?</span><span>+</span></div>
+                    <div class="faq-a"><p style="padding-top: 16px;">Так. Інтеграція відбувається суворо через офіційні API-інтерфейси Meta. Це повністю виключає ризики блокувань або тіньових банів аккаунта.</p></div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q"><span>Звідки ШІ бере інформацію для відповідей?</span><span>+</span></div>
+                    <div class="faq-a"><p style="padding-top: 16px;">Перед запуском мы прописуємо жорстку базу знань для робота: прайс-листи, розмірні сітки та скрипти. ШІ чітко слідує рамкам інструкцій.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer style="padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #444444; font-size: 13px;">
+        <div class="container">
+            <p>&copy; 2026 LIDAN - Smart Business. Всі права захищені. Створено сімейним digital-дуетом.</p>
+        </div>
+    </footer>
+
+    <script>
+        // КАЛЬКУЛЯТОР
+        const leadsInput = document.getElementById('leadsInput');
+        const checkInput = document.getElementById('checkInput');
+        const leadsValue = document.getElementById('leadsValue');
+        const checkValue = document.getElementById('checkValue');
+        const resultValue = document.getElementById('resultValue');
+
+        function calculate() {
+            const l = parseInt(leadsInput.value);
+            const c = parseInt(checkInput.value);
+            leadsValue.innerText = l;
+            checkValue.innerText = `$${c}`;
+            resultValue.innerText = Math.round(l * c * 30 * 0.3);
+        }
+        leadsInput.addEventListener('input', calculate);
+        checkInput.addEventListener('input', calculate);
+
+        // FAQ
+        function toggleFaq(el) {
+            const a = el.querySelector('.faq-a');
+            a.style.maxHeight = (a.style.maxHeight && a.style.maxHeight !== '0px') ? '0px' : a.scrollHeight + 'px';
+        }
+
+        // СИМУЛЯТОР ЧАТА (УКРАЇНСЬКОЮ)
+        const chatBody = document.getElementById('chatBody');
+        const dialogue = [
+            { type: 'user', text: 'Вітаю! Мені подобається ваше худі, але я вагаюся щодо розміру.' },
+            { type: 'ai', text: '🤖 Вітаю! З радістю підкажу. Напишіть ваш зріст та приблизну вагу.' },
+            { type: 'user', text: 'Зріст 182 см, вага 78 кг. Хочу, щоб сиділо вільно.' },
+            { type: 'ai', text: '⚡ На ваші параметри ідеально підійде розмір <b>L</b>. Воно забезпечить правильну оверсайз посадку. Оформимо замовлення?' }
+        ];
+        let idx = 0;
+        function renderMsg(type, text) {
+            const div = document.createElement('div');
+            div.style.maxWidth = '85%'; div.style.padding = '10px 14px'; div.style.borderRadius = '14px'; div.style.animation = 'fadeIn 0.3s ease-out forwards';
+            if (type === 'user') {
+                div.style.alignSelf = 'flex-end'; div.style.background = '#1e293b'; div.style.color = '#f1f5f9';
+                div.style.borderRadius = '14px 14px 2px 14px';
+            } else {
+                div.style.alignSelf = 'flex-start'; div.style.background = 'rgba(255,255,255,0.06)'; div.style.color = '#fff';
+                div.style.border = '1px solid rgba(255,255,255,0.08)'; div.style.borderRadius = '14px 14px 14px 2px';
+            }
+            div.innerHTML = text; chatBody.appendChild(div);
+        }
+        function startSim() {
+            if (idx < dialogue.length) {
+                setTimeout(() => { renderMsg(dialogue[idx].type, dialogue[idx].text); idx++; startSim(); }, 2000);
+            } else {
+                setTimeout(() => { chatBody.innerHTML = ''; idx = 0; startSim(); }, 5000);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', startSim);
+    </script>
+</body>
+</html>

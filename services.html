@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Послуги | LIDAN - Smart Business</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ХЕДЕР ТА НАВІГАЦІЯ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            height: 80px;
+        }
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+            line-height: 1.1;
+        }
+        .logo span {
+            font-weight: 500;
+            font-size: 10px;
+            letter-spacing: 0.22em;
+            display: block;
+            margin-top: 5px;
+            color: #a3a3a3;
+        }
+        nav { display: none; }
+        nav a {
+            color: #666666;
+            text-decoration: none;
+            margin-right: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+        nav a:hover, nav a.active { color: #ffffff; }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+
+        /* СТИЛІ СТОРІНКИ ПОСЛУГ */
+        .main-content { padding: 180px 0 100px 0; }
+        .section-title { max-width: 600px; margin-bottom: 64px; }
+        .section-title h1 { font-size: 46px; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 16px; color: #ffffff; }
+        .section-title p { color: #888888; font-size: 16px; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+        .card {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 440px;
+            transition: border-color 0.3s;
+        }
+        .card:hover { border-color: rgba(255, 255, 255, 0.25); }
+        .card h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; color: #ffffff; }
+        .card p { color: #888888; font-size: 14px; margin-bottom: 20px; }
+
+        .ul-features { margin: 16px 0; list-style: none; font-size: 13px; color: #888888; }
+        .ul-features li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .ul-features li::before { content: "✦"; color: #ffffff; font-size: 10px; }
+
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: baseline;
+        }
+        .price span { font-size: 22px; color: #ffffff; margin-right: 4px; font-weight: 600; }
+
+        @media (min-width: 768px) { nav { display: block; } }
+    </style>
+</head>
+<body>
+
+    <!-- НАВІГАЦІЯ -->
+    <header>
+        <div class="container" style="height: 100%;">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">LIDAN<span>SMART BUSINESS</span></a>
+                <nav>
+                    <a href="index.html">Головна</a>
+                    <a href="services.html" class="active">Послуги</a>
+                    <a href="cases.html">Кейси</a>
+                    <a href="contacts.html">Контакти</a>
+                </nav>
+                <div><a href="contacts.html" class="btn-outline">Залишити заявку ➔</a></div>
+            </div>
+        </div>
+    </header>
+    <!-- ОСНОВНИЙ КОНТЕНТ СТОРІНКИ -->
+    <div class="container main-content">
+        <div class="section-title">
+            <h1>Наші готові ШІ-рішення</h1>
+            <p>Професійна автоматизація рутинних процесів малого та середнього бізнесу у 2026 році.</p>
+        </div>
+
+        <div class="grid-3">
+            <!-- Картка 1 -->
+            <div class="card">
+                <div style="font-size: 32px; margin-bottom: 16px;">🤖</div>
+                <h3>ШІ-Продавець</h3>
+                <p>Розумний автономний агент для Instagram Direct та Telegram. Веде клієнта від першого повідомлення до оплати.</p>
+                <ul class="ul-features">
+                    <li>Миттєва відповідь клієнту за 3 секунди</li>
+                    <li>Автоматичний підбір розмірів та моделей</li>
+                    <li>Збір контактних даних для Нової Пошти</li>
+                </ul>
+                <div class="price"><span>$</span>120</div>
+            </div>
+
+            <!-- Картка 2 -->
+            <div class="card">
+                <div style="font-size: 32px; margin-bottom: 16px;">📊</div>
+                <h3>ШІ-Аудитор чатів</h3>
+                <p>Внутрішній аналітик для повного моніторингу та контролю за роботою живих менеджерів.</p>
+                <ul class="ul-features">
+                    <li>Аналіз логів переписок робочих груп</li>
+                    <li>Виявлення пропущених та злитих лідів</li>
+                    <li>Щовечірній стислий звіт власнику в ТГ</li>
+                </ul>
+                <div class="price"><span>$</span>180</div>
+            </div>
+
+            <!-- Картка 3 -->
+            <div class="card">
+                <div style="font-size: 32px; margin-bottom: 16px;">✍️</div>
+                <h3>ШІ Контент-Фабрика</h3>
+                <p>Автоматизована система створення унікального маркетингового контенту під ваш бренд.</p>
+                <ul class="ul-features">
+                    <li>Сценарії для Reels, TikTok та Shorts</li>
+                    <li>Пости для Telegram та Instagram</li>
+                    <li>Природні тексти без робото-штампів</li>
+                </ul>
+                <div class="price"><span>$</span>90</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer style="padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; color: #444444; font-size: 13px; margin-top: 80px;">
+        <div class="container">
+            <p>&copy; 2026 LIDAN - Smart Business. Всі права захищені. Створено сімейним digital-дуетом.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
