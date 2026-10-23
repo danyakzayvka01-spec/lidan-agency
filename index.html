@@ -1,569 +1,245 @@
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIDAN | Smart Business — Агентство ШІ-рішень</title>
-    <meta name="description" content="Впроваджуємо автономних ШІ-агентів, розумні відділи продажів та автоматизацію бізнес-процесів на базі OpenAI. Знижуйте витрати та масштабуйтеся 24/7.">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook / Telegram / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lidan-agency.vercel.app"> <!-- Замените на ваш домен после публикации -->
-    <meta property="og:title" content="LIDAN | Smart Business — ШІ-рішення для вашого бізнесу">
-    <meta property="og:description" content="Офіційний партнер OpenAI в Україні. Автономні ШІ-продавці, інтеграція з KeyCRM/SalesDrive, автоматизація підтримки. Окупність з першого місяця.">
-    <meta property="og:image" content="https://ibb.co/TqM9MTqD"> <!-- Ссылка на картинку-превью (рекомендуемый размер 1200x630px) -->
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="LIDAN | Smart Business">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #000000;
-            color: #f5f5f7;
-            overflow-x: hidden;
-        }
-
-        .apple-blur {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background-color: rgba(0, 0, 0, 0.75);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .accent-gradient {
-            background: linear-gradient(135deg, #2997ff 0%, #0066cc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .glass-card {
-            background: rgba(29, 29, 31, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(41, 151, 255, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
-        }
-
-        /* Scroll margin compensation for sticky header */
-        section {
-            scroll-margin-top: 100px;
-        }
-
-        /* Scroll Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Infinite marquee animation */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .animate-marquee {
-            animation: marquee 25s linear infinite;
-        }
-
-        .animate-marquee:hover {
-            animation-play-state: paused;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LIDAN | Smart Business</title>
+<style>
+:root {
+ --site-primary:#11172e;
+ --site-secondary:#25234a;
+ --site-background:#050713;
+ --site-on-primary:#f7f8ff;
+ --site-on-secondary:#f7f8ff;
+ --site-on-background:#f7f8ff;
+ --site-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+ --site-font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+ --site-heading-scale:1;
+ --site-spacing-scale:1;
+ --site-radius-scale:1;
+ --site-decoration-opacity:1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#050713;color:#f6f7fb;font-family:var(--site-font-body);overflow-x:hidden}
+#app{background-color:var(--site-background);color:var(--site-on-background);border-radius:0;min-height:100vh;position:relative;isolation:isolate}
+#cosmos{position:fixed;inset:0;z-index:-2;width:100%;height:100%;pointer-events:none}
+.aurora{position:fixed;inset:-15%;z-index:-1;pointer-events:none;opacity:.65;background:radial-gradient(ellipse at 15% 20%,#4234a633,transparent 38%),radial-gradient(ellipse at 85% 75%,#007dba30,transparent 35%);filter:blur(30px);transition:background 1.5s ease,opacity 1s}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,72px);background:linear-gradient(#050713b8,transparent);backdrop-filter:blur(12px)}
+.logo{font-weight:750;letter-spacing:-.06em;font-size:20px}.logo span{font-weight:400;letter-spacing:-.03em;color:#a8acc7}
+nav{display:flex;gap:26px;align-items:center;font-size:13px;color:#c5c8d8}
+.language{appearance:none;background:#ffffff10;color:#f7f8ff;border:1px solid #ffffff25;border-radius:999px;padding:10px 12px;font:inherit;cursor:pointer}.language option{background:#11172e;color:#fff}
+nav a,.textlink{color:inherit;text-decoration:none;transition:color .2s}nav a:hover,.textlink:hover{color:white}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 20px;background:#f4f5ff;color:#111327;font-weight:650;text-decoration:none;font-size:13px;transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px #a6a9ff3b}.cta.ghost{background:#ffffff12;color:#fff;border:1px solid #ffffff28}
+section{position:relative;padding:110px clamp(22px,8vw,120px);overflow:hidden}
+.hero{min-height:100svh;display:grid;align-items:center;padding-top:145px}
+.hero-content{max-width:900px;margin:auto;text-align:center;position:relative;z-index:2}
+.eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:#a6a9d6;font-weight:650}
+h1{font-size:clamp(48px,8.4vw,112px);line-height:.96;letter-spacing:-.075em;margin:22px 0 26px;font-weight:700}
+.gradient{background:linear-gradient(110deg,#fff 10%,#bfc7ff 48%,#79d8f5);color:transparent;background-clip:text}
+.lead{font-size:clamp(16px,2vw,20px);line-height:1.65;color:#b7bbd0;max-width:650px;margin:0 auto 32px}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.orbit-wrap{position:absolute;width:min(70vw,650px);aspect-ratio:1;left:50%;top:49%;transform:translate(-50%,-50%);opacity:.75;pointer-events:none;z-index:0}
+.orb{position:absolute;inset:19%;border-radius:50%;background:radial-gradient(circle at 35% 28%,#a6e8ff 0,#6d7cf7 13%,#29205f 38%,#080a1c 69%);box-shadow:inset -35px -20px 60px #03040c,0 0 100px #665eff35;animation:float 8s ease-in-out infinite}
+.orb:after{content:"";position:absolute;inset:-16%;border:1px solid #8ea4ff45;border-radius:50%;transform:rotateX(68deg) rotateZ(-20deg);box-shadow:0 0 25px #8ea4ff18}
+.ring{position:absolute;inset:9%;border:1px solid #b3baff2b;border-radius:50%;transform:rotateX(72deg) rotateZ(22deg);animation:spin 35s linear infinite}
+.ring:before{content:"";position:absolute;left:13%;top:15%;width:9px;height:9px;background:#b4f0ff;border-radius:50%;box-shadow:0 0 18px #9ceaff}
+@keyframes float{50%{transform:translateY(-15px) scale(1.02)}}@keyframes spin{to{transform:rotateX(72deg) rotateZ(382deg)}}
+.scrollhint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.16em;color:#7f849e}
+.section-head{max-width:760px;margin:0 auto 55px;text-align:center}
+h2{font-size:clamp(34px,5.4vw,66px);line-height:1.03;letter-spacing:-.065em;margin:16px 0 18px}
+.sub{color:#aeb3ca;font-size:16px;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;max-width:1150px;margin:auto}
+.card{border:1px solid #ffffff16;background:linear-gradient(145deg,#ffffff0b,#ffffff03);border-radius:25px;padding:27px;backdrop-filter:blur(10px);transition:transform .35s,border-color .35s}
+.card:hover{transform:translateY(-5px);border-color:#a5aaff55}
+.icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#8f8cff36,#5bd6e51c);border:1px solid #ffffff16;font-size:20px;margin-bottom:22px}
+.card h3{font-size:21px;letter-spacing:-.04em;margin:0 0 12px}.card p{font-size:14px;line-height:1.7;color:#aeb3ca;margin:0}
+.price{font-size:27px;letter-spacing:-.05em;margin:20px 0 5px;font-weight:650}.price small{font-size:12px;color:#8d93ad;letter-spacing:0;font-weight:400}
+.list{padding:0;margin:19px 0 0;list-style:none;color:#c5c9db;font-size:13px;line-height:2}.list li:before{content:"✦";color:#9b9cff;margin-right:9px;font-size:10px}
+.band{background:linear-gradient(130deg,#12152d99,#22214c66);border-block:1px solid #ffffff0d}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center;max-width:1100px;margin:auto}
+.split h2{margin-top:15px}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{padding:22px;border-radius:20px;background:#ffffff08;border:1px solid #ffffff12}
+.metric b{font-size:32px;letter-spacing:-.06em;display:block}.metric span{color:#9ea4bd;font-size:12px}
+.solution{display:flex;flex-direction:column;min-height:290px}.solution .tag{font-size:10px;letter-spacing:.12em;color:#a8afff;margin-bottom:14px}.solution .price{margin-top:auto}
+.steps{max-width:900px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.step{padding:20px 16px;border-top:1px solid #7479b455}.step b{font-size:12px;color:#a5a9ff;letter-spacing:.12em}.step h3{font-size:17px;margin:12px 0}.step p{font-size:13px;line-height:1.6;color:#9fa5bd}
+.interactive{max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.panel{border:1px solid #ffffff1b;background:linear-gradient(145deg,#ffffff0c,#ffffff04);border-radius:24px;padding:clamp(22px,4vw,36px)}
+.panel h3{font-size:23px;letter-spacing:-.04em;margin:10px 0}.panel p,.note{color:#aeb3ca;font-size:13px;line-height:1.65}
+.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:#c8cbe0}.field input,.field select,.field textarea{width:100%;background:#090b1b;color:#f7f8ff;border:1px solid #ffffff24;border-radius:12px;padding:12px;font:inherit;min-width:0}.field textarea{min-height:88px;resize:vertical}
+.result{border:1px solid #8e91ff35;background:#8c8aff0d;border-radius:16px;padding:16px;margin-top:15px;color:#dfe1ff;font-size:13px;line-height:1.7;min-height:55px}
+.flow{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin:25px 0}.flow-node{padding:13px 15px;border:1px solid #8d91ff50;background:#7778ff12;border-radius:13px;font-size:12px}.flow-arrow{color:#8e91ff}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1100px;margin:auto}.trust-grid .card{padding:23px}
+.case-label{display:inline-block;border:1px solid #d8c17a45;color:#dfc982;border-radius:999px;padding:6px 10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:800px){.interactive,.trust-grid{grid-template-columns:1fr}}
+.faq{max-width:800px;margin:auto}.faq details{border-bottom:1px solid #ffffff1a;padding:20px 0}.faq summary{cursor:pointer;list-style:none;font-size:17px;font-weight:600;display:flex;justify-content:space-between;gap:20px}.faq summary:after{content:"+";color:#a8abff;font-size:22px;font-weight:300}.faq details[open] summary:after{content:"−"}.faq p{color:#aeb3ca;line-height:1.7;font-size:14px;max-width:700px}
+.contact{border:1px solid #ffffff20;background:radial-gradient(ellipse at 50% 0%,#615bff2a,transparent 65%),#ffffff06;border-radius:32px;text-align:center;max-width:1050px;margin:auto;padding:clamp(35px,7vw,80px)}
+.contact h2{max-width:700px;margin:16px auto}.contact p{color:#aeb3ca;line-height:1.7;max-width:550px;margin:0 auto 27px}
+footer{padding:28px clamp(22px,8vw,120px);display:flex;justify-content:space-between;gap:18px;color:#777e9a;font-size:12px;border-top:1px solid #ffffff12}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:800px){nav{display:none}.cards{grid-template-columns:1fr}.split{grid-template-columns:1fr;gap:30px}.steps{grid-template-columns:1fr 1fr}.hero{padding-inline:20px}.orbit-wrap{width:100vw;top:43%}section{padding-block:85px}}
+@media(max-width:440px){.steps{grid-template-columns:1fr}.hero-actions .cta{width:100%}footer{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
 </head>
-<body class="relative min-h-screen">
-
-    <!-- 3D Canvas Background -->
-    <canvas id="canvas3d" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 apple-blur border-b border-white/5">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#" class="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
-                <span class="text-blue-500 font-bold">LIDAN</span>
-                <span class="text-xs text-neutral-400 font-normal border-l border-white/20 pl-2">Smart Business</span>
-            </a>
-            <div class="hidden md:flex items-center gap-8 text-sm text-neutral-400 font-medium">
-                <a href="#why-us" class="hover:text-white transition-colors">Чому ми</a>
-                <a href="#solutions" class="hover:text-white transition-colors">Готові рішення</a>
-                <a href="#services" class="hover:text-white transition-colors">Послуги</a>
-                <a href="#tariffs" class="hover:text-white transition-colors">Тарифи</a>
-                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
-            </div>
-            <a href="https://t.me/lidan_manager" target="_blank" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-medium px-4 py-2 rounded-full transition-all tracking-tight">
-                Обговорити проект
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto space-y-6 z-10">
-            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide text-blue-400 reveal">
-                <svg class="w-3 h-3 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg>
-                Офіційний партнер OpenAI технологій
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gradient reveal" style="transition-delay: 100ms;">
-                Трансформуйте бізнес <br><span class="accent-gradient">автономними ШІ-агентами</span>
-            </h1>
-            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed reveal" style="transition-delay: 200ms;">
-                Агентство <strong>LIDAN</strong> розробляє інтелектуальних ШІ-асистентів, які оптимізують процеси, замінюють рутину та збільшують конверсію продажів 24/7 без лікарняних та людського фактору.
-            </p>
-            <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center reveal" style="transition-delay: 300ms;">
-                <a href="https://t.me/lidan_manager" target="_blank" class="w-full sm:w-auto bg-[#f5f5f7] hover:bg-white text-black font-semibold px-8 py-3.5 rounded-full text-base transition-all">
-                    Запустити ШІ-пілот
-                </a>
-                <a href="#solutions" class="w-full sm:w-auto text-blue-400 hover:text-blue-300 font-medium px-6 py-3 text-base flex items-center justify-center gap-1 group">
-                    Наші рішення <span class="group-hover:translate-x-1 transition-transform">→</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Tech Stack Marquee Section (OpenAI & Partners) -->
-    <section class="py-10 bg-neutral-900/30 border-y border-white/5 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 mb-4 text-center">
-            <p class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">Наш технологічний стек та партнери</p>
-        </div>
-        <div class="flex overflow-hidden select-none gap-16 relative">
-            <div class="flex items-center justify-around min-w-full shrink-0 gap-16 animate-marquee">
-                <span class="text-xl font-bold tracking-wider text-neutral-400 flex items-center gap-2">🟢 OpenAI Partner</span>
-                <span class="text-xl font-medium text-neutral-500">KeyCRM Integrated</span>
-                <span class="text-xl font-bold tracking-tight text-neutral-400">Anthropic Claude</span>
-                <span class="text-xl font-medium text-neutral-500">SalesDrive CRM</span>
-                <span class="text-xl font-semibold tracking-wide text-neutral-400">Python AI Ecosystem</span>
-                <span class="text-xl font-medium text-neutral-500">LangChain Framework</span>
-            </div>
-            <div class="flex items-center justify-around min-w-full shrink-0 gap-16 animate-marquee" aria-hidden="true">
-                <span class="text-xl font-bold tracking-wider text-neutral-400 flex items-center gap-2">🟢 OpenAI Partner</span>
-                <span class="text-xl font-medium text-neutral-500">KeyCRM Integrated</span>
-                <span class="text-xl font-bold tracking-tight text-neutral-400">Anthropic Claude</span>
-                <span class="text-xl font-medium text-neutral-500">SalesDrive CRM</span>
-                <span class="text-xl font-semibold tracking-wide text-neutral-400">Python AI Ecosystem</span>
-                <span class="text-xl font-medium text-neutral-500">LangChain Framework</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us Section (Зачем и почему это нужно клиенту) -->
-    <section id="why-us" class="max-w-6xl mx-auto px-6 py-32 space-y-16">
-        <div class="text-center max-w-3xl mx-auto space-y-4 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Навіщо вашому бізнесу ШІ від <span class="text-blue-500">LIDAN</span>?</h2>
-            <p class="text-neutral-400 text-lg font-light">Світ змінюється надто швидко. ШІ — це не просто тренд, це головна конкурентна перевага сучасності.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal">
-                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">10x</div>
-                <h3 class="text-xl font-semibold text-white">Шалена економія бюджету</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Один ШІ-агент обробляє тисячі запитів одночасно. Він замінює цілий штат менеджерів першої лінії, не вимагає робочого місця, податків та зарплати.
-                </p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 150ms;">
-                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">0с</div>
-                <h3 class="text-xl font-semibold text-white">Миттєва швидкість відповіді</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Клієнт отримує точну відповідь за 2 секунди у будь-який час дня чи ночі. Жодних втрачених лідів у вихідні чи вечірні години.
-                </p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 300ms;">
-                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">100%</div>
-                <h3 class="text-xl font-semibold text-white">Робота без помилок</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Завдяки базі знань та моделям OpenAI, ШІ ідеально знає ваш продукт, не втомлюється, не піддається емоціям та завжди спілкується ввічливо.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ready Solutions Section (Готовые решения) -->
-    <section id="solutions" class="max-w-6xl mx-auto px-6 py-12 space-y-16">
-        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
-            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Швидкий старт</div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Готові коробкові рішення</h2>
-            <p class="text-neutral-400 text-lg font-light">Впровадження перевірених архітектур під ключ за 7–14 днів.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between reveal">
-                <div class="space-y-6">
-                    <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full font-medium">Для E-Commerce та Послуг</span>
-                    <h3 class="text-2xl font-bold text-gradient">ШІ-Продавець для Месенджерів</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">
-                        Інтегрується в Telegram, Viber або Instagram. Веде клієнта від вітання до вибору товару, консультує, закриває заперечення та автоматично створює угоду у вашій CRM (KeyCRM / SalesDrive).
-                    </p>
-                    <ul class="space-y-2 text-xs text-neutral-300">
-                        <li class="flex items-center gap-2">✓ Повна інтеграція з каталогом товарів</li>
-                        <li class="flex items-center gap-2">✓ Автоматична вигрузка лідів у CRM</li>
-                    </ul>
-                </div>
-                <div class="pt-8">
-                    <a href="https://t.me/lidan_manager" target="_blank" class="inline-block bg-white/5 hover:bg-white/10 text-white font-medium text-xs px-5 py-2.5 rounded-full transition-all">
-                        Хочу таке рішення
-                    </a>
-                </div>
-            </div>
-
-            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: 150ms;">
-                <div class="space-y-6">
-                    <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full font-medium">Для Онлайн-Шкіл та B2B</span>
-                    <h3 class="text-2xl font-bold text-gradient">ШІ-Супровід та Інбординг</h3>
-                    <p class="text-neutral-400 text-sm leading-relaxed">
-                        Розумний асистент, що навчається на ваших внутрішніх регламентах, інструкціях або базі знань. Миттєво відповідає на складні технічні питання користувачів, допомагає з адаптацією клієнтів.
-                    </p>
-                    <ul class="space-y-2 text-xs text-neutral-300">
-                        <li class="flex items-center gap-2">✓ Навчання на базі документів будь-якого об'єму</li>
-                        <li class="flex items-center gap-2">✓ Зниження навантаження на техпідтримку на 80%</li>
-                    </ul>
-                </div>
-                <div class="pt-8">
-                    <a href="https://t.me/lidan_manager" target="_blank" class="inline-block bg-white/5 hover:bg-white/10 text-white font-medium text-xs px-5 py-2.5 rounded-full transition-all">
-                        Хочу таке рішення
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="max-w-6xl mx-auto px-6 py-32 space-y-16">
-        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
-            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Екосистема</div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Послуги розробки</h2>
-            <p class="text-neutral-400 text-lg font-light">Створюємо індивідуальні ШІ-системи будь-якої складності під бізнес-завдання.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal">
-                <h3 class="text-xl font-semibold text-white">1. Проектування архітектури</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Аналізуємо ваші бізнес-процеси, виявляємо рутинні завдання та розробляємо детальну карту впровадження ШІ та LLM-моделей.
-                </p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 150ms;">
-                <h3 class="text-xl font-semibold text-white">2. Кастомна розробка</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Програмуємо агентів на базі OpenAI API, налаштовуємо RAG-системи (робота зі складними базами знань) та логіку дій агента.
-                </p>
-            </div>
-            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 300ms;">
-                <h3 class="text-xl font-semibold text-white">3. CRM Інтеграція</h3>
-                <p class="text-sm text-neutral-400 leading-relaxed">
-                    Безшовно зв'язуємо штучний інтелект з вашими поточними інструментами: KeyCRM, SalesDrive, чатами та ERP-системами.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tariffs Section -->
-    <section id="tariffs" class="max-w-6xl mx-auto px-6 py-12 space-y-16">
-        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
-            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Вартість</div>
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Прозорі тарифи</h2>
-            <p class="text-neutral-400 text-lg font-light">Оберіть рівень автоматизації, що відповідає масштабам вашої компанії.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8 items-start">
-            <!-- Tariff 1 -->
-            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full reveal">
-                <div class="space-y-4">
-                    <h3 class="text-lg font-medium text-neutral-300">AI Pilot</h3>
-                    <div class="text-4xl font-bold text-white">$850</div>
-                    <p class="text-xs text-neutral-400">Швидкий тест ШІ-технологій у вашому бізнесі.</p>
-                    <div class="h-px bg-white/10 my-4"></div>
-                    <ul class="space-y-2 text-xs text-neutral-300">
-                        <li>• Базовий ШІ-асистент (1 месенджер)</li>
-                        <li>• Навчання на невеликій базі знань</li>
-                        <li>• Стандартна інтеграція CRM</li>
-                        <li>• До 14 днів розробки</li>
-                    </ul>
-                </div>
-                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-white/5 hover:bg-white/10 text-white font-medium text-xs py-3 rounded-full transition-all">
-                    Замовити Pilot
-                </a>
-            </div>
-
-            <!-- Tariff 2 (Featured) -->
-            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full border-blue-500/50 shadow-lg shadow-blue-500/5 reveal" style="transition-delay: 150ms;">
-                <div class="absolute -top-3 right-6 bg-blue-500 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Популярно</div>
-                <div class="space-y-4">
-                    <h3 class="text-lg font-medium text-blue-400">AI Business Core</h3>
-                    <div class="text-4xl font-bold text-white">$1,950</div>
-                    <p class="text-xs text-neutral-400">Повноцінний автономний відділ продажів чи підтримки.</p>
-                    <div class="h-px bg-white/10 my-4"></div>
-                    <ul class="space-y-2 text-xs text-neutral-300">
-                        <li>• Мультиплатформенний агент (Telegram/Insta)</li>
-                        <li>• Розширена RAG-архітектура бази знань</li>
-                        <li>• Глибока синхронізація з KeyCRM / SalesDrive</li>
-                        <li>• Сценарії закриття лідів та апсейлів</li>
-                        <li>• 1 місяць технічної підтримки</li>
-                    </ul>
-                </div>
-                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold text-xs py-3 rounded-full transition-all">
-                    Замовити Core
-                </a>
-            </div>
-
-            <!-- Tariff 3 -->
-            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full reveal" style="transition-delay: 300ms;">
-                <div class="space-y-4">
-                    <h3 class="text-lg font-medium text-neutral-300">Custom Enterprise</h3>
-                    <div class="text-4xl font-bold text-white">від $4,500</div>
-                    <p class="text-xs text-neutral-400">Індивідуальні ШІ-екосистеми для великих корпорацій.</p>
-                    <div class="h-px bg-white/10 my-4"></div>
-                    <ul class="space-y-2 text-xs text-neutral-300">
-                        <li>• Унікальні кастомні нейромережеві ланцюжки</li>
-                        <li>• Інтеграція з внутрішніми ERP / BAS / 1C</li>
-                        <li>• Розробка на виділених серверах</li>
-                        <li>• NDA та максимальний захист персональних даних</li>
-                        <li>• Пріоритетна цілодобова підтримка</li>
-                    </ul>
-                </div>
-                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-white/5 hover:bg-white/10 text-white font-medium text-xs py-3 rounded-full transition-all">
-                    Зв'язатися
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="max-w-4xl mx-auto px-6 py-32 space-y-12">
-        <div class="text-center space-y-4 reveal">
-            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Часті запитання</h2>
-            <p class="text-neutral-400 text-lg font-light">Відповіді на популярні запитання наших клієнтів.</p>
-        </div>
-
-        <div class="space-y-4 reveal">
-            <!-- Item 1 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-                <details class="w-full text-left p-6 cursor-pointer outline-none">
-                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
-                        <span>Скільки часу займає розробка та впровадження?</span>
-                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
-                    </summary>
-                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
-                        Готові коробкові рішення ми розгортаємо та підключаємо до вашої CRM за 7-14 робочих днів. Складні індивідуальні Enterprise-системи вимагають від 3 до 6 тижнів детальної розробки та тестування.
-                    </p>
-                </details>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-                <details class="w-full text-left p-6 cursor-pointer outline-none">
-                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
-                        <span>Чи розмовляє ваш ШІ чистою українською мовою?</span>
-                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
-                    </summary>
-                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
-                        Так, завдяки сучасним мовним моделям останнього покоління OpenAI, наші агенти бездоганно ведуть комунікацію природною, живою українською мовою без помилок та суржику, адаптуючись під Tone of Voice вашої компанії.
-                    </p>
-                </details>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-                <details class="w-full text-left p-6 cursor-pointer outline-none">
-                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
-                        <span>Хто платить за токени та використання API нейромереж?</span>
-                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
-                    </summary>
-                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
-                        Акаунти реєструються безпосередньо на вашу компанію, забезпечуючи повну юридичну безпеку даних. Оплата запитів (токенів) здійснюється за прямими тарифами OpenAI з вашої картки (в середньому це всього $10-$30 на місяць за активне використання).
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-black py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500">
-            <div class="space-y-2 text-center md:text-left">
-                <p class="font-semibold text-neutral-400">© 2026 LIDAN | Smart Business. Усі права захищено.</p>
-                <p class="font-light">Преміальні рішення штучного інтелекту для лідерів ринку.</p>
-            </div>
-            <div class="flex items-center gap-6 font-medium">
-                <a href="https://t.me/lidan_manager" target="_blank" class="hover:text-white transition-colors">Telegram Менеджер</a>
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
-                    Вгору ↑
-                </button>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Three.js Visualizations Script (Core AI + 600 Stars Ambient) -->
-    <script>
-        let scene, camera, renderer, starField, coreMesh, orbitRing;
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-
-        const windowHalfX = window.innerWidth / 2;
-        const windowHalfY = window.innerHeight / 2;
-
-        function init() {
-            const canvas = document.getElementById('canvas3d');
-            scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x000000, 0.08);
-
-            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-            camera.position.z = 8;
-
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setSize(window.innerWidth, window.innerHeight);
-
-            // 1. 600 Ambient Stars/Particles
-            const starsGeometry = new THREE.BufferGeometry();
-            const starsCount = 600;
-            const positions = new Float32Array(starsCount * 3);
-            const colors = new Float32Array(starsCount * 3);
-
-            for(let i=0; i<starsCount*3; i+=3) {
-                // Sphere distribution
-                const radius = 5 + Math.random() * 12;
-                const u = Math.random();
-                const v = Math.random();
-                const theta = u * 2.0 * Math.PI;
-                const phi = Math.acos(2.0 * v - 1.0);
-
-                positions[i] = radius * Math.sin(phi) * Math.cos(theta);
-                positions[i+1] = radius * Math.sin(phi) * Math.sin(theta);
-                positions[i+2] = radius * Math.cos(phi);
-
-                // Deep Apple Blues & Pure Whites
-                colors[i] = 0.3 + Math.random() * 0.7; // R
-                colors[i+1] = 0.6 + Math.random() * 0.4; // G
-                colors[i+2] = 1.0; // B
-            }
-
-            starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            starsGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-            // Custom glowing star texture (using canvas dynamically)
-            const pMaterial = new THREE.PointsMaterial({
-                size: 0.08,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.7,
-                blending: THREE.AdditiveBlending
-            });
-
-            starField = new THREE.Points(starsGeometry, pMaterial);
-            scene.add(starField);
-
-            // 2. Central Core (Icosahedron)
-            const coreGeo = new THREE.IcosahedronGeometry(1.6, 1);
-            const coreMat = new THREE.MeshBasicMaterial({
-                color: 0x0066cc,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.35,
-                blending: THREE.AdditiveBlending
-            });
-            coreMesh = new THREE.Mesh(coreGeo, coreMat);
-            scene.add(coreMesh);
-
-            // 3. Core Orbit Ring
-            const ringGeo = new THREE.RingGeometry(2.3, 2.35, 64);
-            const ringMat = new THREE.MeshBasicMaterial({
-                color: 0x2997ff,
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.2,
-                wireframe: true
-            });
-            orbitRing = new THREE.Mesh(ringGeo, ringMat);
-            orbitRing.rotation.x = Math.PI / 2.3;
-            scene.add(orbitRing);
-
-            // Ambient subtle lighting just in case
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
-            scene.add(ambientLight);
-
-            document.addEventListener('mousemove', onDocumentMouseMove);
-            window.addEventListener('resize', onWindowResize);
-
-            animate();
-        }
-
-        function onDocumentMouseMove(event) {
-            mouseX = (event.clientX - windowHalfX) / 150;
-            mouseY = (event.clientY - windowHalfY) / 150;
-        }
-
-        function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            const time = Date.now() * 0.001;
-
-            // Smooth mouse inertia tracking (Apple Style)
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-
-            // Rotate star fields and core based on mouse movement
-            starField.rotation.y = time * 0.02 + targetX * 0.2;
-            starField.rotation.x = targetY * 0.1;
-
-            coreMesh.rotation.y = -time * 0.15 + targetX * 0.4;
-            coreMesh.rotation.x = time * 0.1;
-
-            orbitRing.rotation.z = time * 0.1;
-            orbitRing.rotation.y = targetX * 0.2;
-
-            // Breathing / Pulsing animation for Core Mesh
-            const pulse = 1.0 + Math.sin(time * 2.0) * 0.08;
-            coreMesh.scale.set(pulse, pulse, pulse);
-
-            renderer.render(scene, camera);
-        }
-
-        // Scroll Reveal Activation Engine
-        function checkReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkReveal);
-        window.addEventListener('load', () => {
-            init();
-            checkReveal(); // Trigger initial on document load
-        });
-    </script>
+<body>
+<div id="app">
+<canvas id="cosmos"></canvas><div class="aurora" id="aurora"></div>
+<header>
+ <a class="logo textlink" href="#top">LIDAN <span>| Smart Business</span></a>
+ <nav><a href="#services">Услуги</a><a href="#solutions">Решения</a><a href="#demo">Демо</a><a href="#calculator">Калькулятор</a><a href="#pricing">Цены</a><a href="#faq">FAQ</a></nav>
+ <div style="display:flex;align-items:center;gap:10px"><select class="language" id="language" aria-label="Мова / язык / language"><option value="uk">UA</option><option value="ru">RU</option><option value="en">EN</option></select><a class="cta" href="https://t.me/lidan_manager" target="_blank" rel="noopener">Обговорити проєкт ↗</a></div>
+</header>
+<main>
+<section class="hero" id="top">
+ <div class="orbit-wrap"><div class="ring"></div><div class="orb"></div></div>
+ <div class="hero-content">
+  <div class="eyebrow">AI • Automation • Growth</div>
+  <h1>Бизнес. <span class="gradient">На новой орбите.</span></h1>
+  <p class="lead">LIDAN — интеллектуальные решения, которые освобождают время команды, превращают процессы в систему и помогают бизнесу расти.</p>
+  <div class="hero-actions"><a class="cta" href="#solutions">Найти своё решение <span>↓</span></a><a class="cta ghost" href="https://t.me/lidan_manager" target="_blank" rel="noopener">Связаться с менеджером</a></div>
+ </div>
+ <div class="scrollhint">SCROLL TO EXPLORE&nbsp; ↓</div>
+</section>
+<section id="services">
+ <div class="section-head reveal"><div class="eyebrow">Что мы создаём</div><h2>Умные инструменты.<br><span class="gradient">Реальная польза.</span></h2><p class="sub">Не внедряем ИИ ради моды. Находим повторяющиеся задачи, проектируем удобный сценарий и измеряем результат.</p></div>
+ <div class="cards">
+  <article class="card reveal"><div class="icon">✧</div><h3>AI-ассистенты</h3><p>Помогают отвечать клиентам, искать информацию, готовить документы и поддерживать команду 24/7.</p><ul class="list"><li>База знаний и ответы</li><li>Поддержка в Telegram</li><li>Передача сложных запросов человеку</li></ul></article>
+  <article class="card reveal"><div class="icon">⌘</div><h3>Автоматизация процессов</h3><p>Соединяем сервисы и убираем ручную рутину: от заявки до уведомления и отчёта.</p><ul class="list"><li>CRM и формы</li><li>Интеграции и workflow</li><li>Уведомления и отчётность</li></ul></article>
+  <article class="card reveal"><div class="icon">◎</div><h3>AI для продаж и маркетинга</h3><p>Ускоряем обработку лидов, создаём контент-процессы и помогаем не терять обращения.</p><ul class="list"><li>Квалификация лидов</li><li>Контент-помощники</li><li>Аналитика обращений</li></ul></article>
+ </div>
+</section>
+<section class="band" id="why">
+ <div class="split">
+  <div class="reveal"><div class="eyebrow">Зачем это вашему бизнесу</div><h2>Меньше рутины.<br><span class="gradient">Больше фокуса.</span></h2><p class="sub">Когда команда занята копированием данных и одинаковыми ответами, рост становится дороже. Мы проектируем решения под ваш процесс — с контролем, понятными границами и участием человека там, где это важно.</p><a class="textlink" href="https://t.me/lidan_manager" target="_blank" rel="noopener">Разобрать вашу задачу ↗</a></div>
+  <div class="metrics reveal"><div class="metric"><b>24/7</b><span>Автоматическая первичная поддержка</span></div><div class="metric"><b>↓</b><span>Меньше повторяющихся операций</span></div><div class="metric"><b>+1</b><span>Единый процесс вместо хаоса</span></div><div class="metric"><b>Human</b><span>Контроль и эскалация человеку</span></div></div>
+ </div>
+</section>
+<section id="solutions">
+ <div class="section-head reveal"><div class="eyebrow">Готовые сценарии</div><h2>Стартуйте с понятного<br><span class="gradient">результата.</span></h2><p class="sub">Пакеты — ориентиры для первого разговора. Финальная стоимость зависит от интеграций, объёма данных и требований.</p></div>
+ <div class="cards">
+  <article class="card solution reveal"><div class="tag">01 / CUSTOMER CARE</div><h3>Telegram AI-консультант</h3><p>Отвечает по вашим материалам, помогает клиенту сориентироваться и передаёт нестандартный вопрос менеджеру.</p><div class="price">от $390 <small>/ запуск</small></div><ul class="list"><li>Сценарий диалога</li><li>Подключение базы знаний</li><li>Тестирование и настройка</li></ul></article>
+  <article class="card solution reveal"><div class="tag">02 / OPERATIONS</div><h3>Автоматизация заявок</h3><p>Заявка попадает в нужную систему, ответственный получает уведомление, клиент — подтверждение.</p><div class="price">от $490 <small>/ запуск</small></div><ul class="list"><li>Форма или мессенджер</li><li>CRM / таблица</li><li>Уведомления и логика</li></ul></article>
+  <article class="card solution reveal"><div class="tag">03 / SALES</div><h3>AI-помощник продаж</h3><p>Собирает первичную информацию, классифицирует запрос и готовит менеджеру краткое резюме.</p><div class="price">от $690 <small>/ запуск</small></div><ul class="list"><li>Квалификация лида</li><li>Интеграция с процессом продаж</li><li>Передача человеку</li></ul></article>
+ </div>
+</section>
+<section id="pricing" class="band">
+ <div class="section-head reveal"><div class="eyebrow">Прозрачный старт</div><h2>Стоимость — без<br><span class="gradient">сюрпризов.</span></h2><p class="sub">Ниже — ориентировочный прайс в USD. Поддержка, платные API и подписки сторонних сервисов обычно оплачиваются отдельно.</p></div>
+ <div class="cards">
+  <article class="card reveal"><div class="eyebrow">Базовый</div><h3>AI Starter</h3><div class="price">$290–490</div><p>Для одной задачи и простого сценария.</p><ul class="list"><li>Аудит и схема решения</li><li>Один базовый AI workflow</li><li>Тестовый запуск</li><li>Краткая инструкция</li></ul></article>
+  <article class="card reveal" style="border-color:#8887ff70;background:linear-gradient(145deg,#6b68ff1c,#ffffff05)"><div class="eyebrow">Популярный выбор</div><h3>Business Flow</h3><div class="price">$690–1,490</div><p>Для процесса с несколькими шагами или интеграциями.</p><ul class="list"><li>Проектирование процесса</li><li>2–4 интеграции (по согласованию)</li><li>AI-логика и обработка ошибок</li><li>Тестирование и передача</li></ul></article>
+  <article class="card reveal"><div class="eyebrow">Индивидуально</div><h3>AI System</h3><div class="price">от $1,900</div><p>Для комплексного решения и нескольких ролей.</p><ul class="list"><li>Архитектура под бизнес</li><li>Мультисценарная автоматизация</li><li>Расширенные интеграции</li><li>План поддержки</li></ul></article>
+ </div>
+ <p style="text-align:center;color:#777e9a;font-size:12px;margin:25px auto 0;max-width:800px">Ежемесячное сопровождение: ориентир $99–399/мес. Точная смета и сроки фиксируются после короткого брифинга. Цены на сайте — примерные, не публичная оферта.</p>
+</section>
+<section id="process">
+ <div class="section-head reveal"><div class="eyebrow">Как работаем</div><h2>От задачи —<br><span class="gradient">к работающей системе.</span></h2></div>
+ <div class="steps">
+  <div class="step reveal"><b>01 / DISCOVER</b><h3>Погружаемся</h3><p>Уточняем цель, текущий процесс и критерии успеха.</p></div>
+  <div class="step reveal"><b>02 / DESIGN</b><h3>Проектируем</h3><p>Согласуем сценарий, инструменты, стоимость и сроки.</p></div>
+  <div class="step reveal"><b>03 / BUILD</b><h3>Создаём</h3><p>Собираем решение, проверяем на тестовых кейсах.</p></div>
+  <div class="step reveal"><b>04 / LAUNCH</b><h3>Передаём</h3><p>Запускаем, обучаем и при необходимости сопровождаем.</p></div>
+ </div>
+</section>
+<section class="band" id="demo">
+ <div class="section-head reveal"><div class="eyebrow">Попробуйте на примере</div><h2>Не обещания.<br><span class="gradient">Посмотрите, как работает.</span></h2><p class="sub">Интерактивная демонстрация типового процесса. Это локальный пример, не подключённый к реальному AI или CRM.</p></div>
+ <div class="interactive">
+  <div class="panel reveal"><div class="eyebrow">01 / AI-КОНСУЛЬТАНТ</div><h3>Ответ клиенту — за секунды</h3><p>Введите типичный вопрос клиента и посмотрите пример ответа с эскалацией менеджеру.</p><div class="field"><label for="demo-question">Вопрос клиента</label><textarea id="demo-question" placeholder="Например: Сколько стоит внедрение AI-консультанта?"></textarea></div><button class="cta" id="demo-run" type="button">Сгенерировать демо-ответ ↗</button><div class="result" id="demo-result" aria-live="polite">Здесь появится демонстрационный ответ и следующий шаг процесса.</div></div>
+  <div class="panel reveal"><div class="eyebrow">02 / СХЕМА АВТОМАТИЗАЦИИ</div><h3>От сообщения — к действию</h3><p>Сценарий может соединять каналы, AI и инструменты команды. Реальные интеграции согласуются отдельно.</p><div class="flow"><span class="flow-node">Заявка</span><span class="flow-arrow">→</span><span class="flow-node">AI-анализ</span><span class="flow-arrow">→</span><span class="flow-node">CRM</span><span class="flow-arrow">→</span><span class="flow-node">Менеджер</span></div><div class="result">Контрольная точка: нестандартные запросы, ошибки и важные решения передаются человеку.</div></div>
+ </div>
+</section>
+<section id="calculator">
+ <div class="section-head reveal"><div class="eyebrow">Оцените потенциал</div><h2>Сколько времени<br><span class="gradient">можно вернуть команде?</span></h2><p class="sub">Измените параметры — получите ориентировочную оценку экономии. Это модель, не обещание результата.</p></div>
+ <div class="interactive"><div class="panel reveal"><div class="field"><label for="calc-people">Сотрудников выполняют задачу</label><input id="calc-people" type="number" min="1" max="500" value="2"></div><div class="field"><label for="calc-hours">Часов рутины на человека в неделю</label><input id="calc-hours" type="number" min="0" max="80" value="5"></div><div class="field"><label for="calc-rate">Стоимость часа работы, $</label><input id="calc-rate" type="number" min="0" max="10000" value="10"></div><div class="field"><label for="calc-share">Доля процесса, которую удастся автоматизировать</label><select id="calc-share"><option value="0.2">20% — осторожный сценарий</option><option value="0.4" selected>40% — умеренный сценарий</option><option value="0.6">60% — высокий сценарий</option></select></div></div><div class="panel reveal"><div class="eyebrow">ВАША ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА</div><h3 id="calc-hours-result">≈ 17 часов / месяц</h3><p id="calc-money-result">Потенциально высвобождается около $173 рабочего времени в месяц.</p><div class="result">Реальный эффект зависит от качества процесса, стоимости внедрения, обслуживания и доли задач, требующих участия человека.</div><a class="cta" style="margin-top:17px" href="https://t.me/lidan_manager" target="_blank" rel="noopener">Обсудить расчёт ↗</a></div></div>
+</section>
+<section class="band" id="audit">
+ <div class="section-head reveal"><div class="eyebrow">Быстрый AI-аудит</div><h2>С чего начать<br><span class="gradient">автоматизацию?</span></h2><p class="sub">Ответьте на три вопроса — получите стартовую гипотезу для обсуждения.</p></div>
+ <div class="panel reveal" style="max-width:760px;margin:auto"><div class="field"><label for="audit-area">Где больше всего ручной работы?</label><select id="audit-area"><option value="support">Ответы клиентам и поддержка</option><option value="leads">Обработка заявок и продажи</option><option value="ops">Внутренние процессы и отчётность</option><option value="content">Контент и маркетинг</option></select></div><div class="field"><label for="audit-tools">Какие инструменты используете?</label><input id="audit-tools" placeholder="Например: Telegram, Google Sheets, CRM"></div><div class="field"><label for="audit-goal">Что важнее всего?</label><select id="audit-goal"><option>Быстрее отвечать клиентам</option><option>Снизить ручную нагрузку</option><option>Не терять лиды и продажи</option><option>Упорядочить данные и отчёты</option></select></div><button class="cta" id="audit-run" type="button">Получить гипотезу ↗</button><div class="result" id="audit-result" aria-live="polite">Рекомендация появится здесь. Это предварительная гипотеза, не технический аудит.</div><p class="note">Не вводите персональные данные клиентов, пароли или конфиденциальную информацию.</p></div>
+</section>
+<section id="cases">
+ <div class="section-head reveal"><div class="eyebrow">Сценарии в цифрах</div><h2>Показываем логику.<br><span class="gradient">Не выдумываем кейсы.</span></h2><p class="sub">Ниже — иллюстративные сценарии с условными исходными данными. Они не являются результатами реальных клиентов.</p></div>
+ <div class="cards"><article class="card reveal"><span class="case-label">Демо-сценарий</span><h3 style="margin-top:16px">Первичная поддержка</h3><p>Условно: 40 типовых обращений в день. AI готовит ответы по базе знаний, а сложные вопросы передаёт оператору.</p><ul class="list"><li>Измерять время первого ответа</li><li>Отслеживать долю эскалаций</li><li>Проверять качество ответов</li></ul></article><article class="card reveal"><span class="case-label">Демо-сценарий</span><h3 style="margin-top:16px">Обработка лидов</h3><p>Условно: заявки из нескольких каналов собираются в единый поток, классифицируются и направляются ответственному.</p><ul class="list"><li>Измерять скорость обработки</li><li>Контролировать потерянные заявки</li><li>Сравнивать конверсию до и после</li></ul></article><article class="card reveal"><span class="case-label">Как подтвердим эффект</span><h3 style="margin-top:16px">Сначала базовая метрика</h3><p>До запуска фиксируем исходные показатели, после — сравниваем одинаковые периоды и условия.</p><ul class="list"><li>Время и стоимость процесса</li><li>Ошибки и качество</li><li>Обратная связь команды</li></ul></article></div>
+</section>
+<section class="band" id="trust">
+ <div class="section-head reveal"><div class="eyebrow">Ответственный AI</div><h2>Автоматизация —<br><span class="gradient">с человеческим контролем.</span></h2><p class="sub">Продумываем не только то, что система делает, но и её границы.</p></div>
+ <div class="trust-grid"><article class="card reveal"><div class="icon">◎</div><h3>Проверка качества</h3><p>Тестируем типовые и нестандартные запросы, уточняем источники ответов и отмечаем ограничения.</p></article><article class="card reveal"><div class="icon">↗</div><h3>Передача человеку</h3><p>Настраиваем эскалацию при сомнении, жалобе, сложном вопросе или важном решении.</p></article><article class="card reveal"><div class="icon">⌁</div><h3>Доступ и данные</h3><p>Согласуем нужные данные, права доступа, используемые сервисы и порядок хранения до внедрения.</p></article></div>
+ <div class="panel reveal" style="max-width:1100px;margin:18px auto 0"><h3>Что мы не обещаем автоматизировать без проверки</h3><p>Мы не заявляем, что AI безошибочен или должен самостоятельно принимать чувствительные решения. Сначала оцениваем риски, добавляем контроль и оставляем человеку право вмешаться.</p></div>
+</section>
+<section id="method">
+ <div class="section-head reveal"><div class="eyebrow">Фирменный подход LIDAN</div><h2>LIDAN FLOW.<br><span class="gradient">От узкого места к росту.</span></h2><p class="sub">Пять шагов, которые помогают не автоматизировать хаос, а улучшать конкретный процесс.</p></div>
+ <div class="steps" style="grid-template-columns:repeat(5,1fr)"><div class="step reveal"><b>L / LOCATE</b><h3>Находим</h3><p>Определяем узкое место и повторяющуюся работу.</p></div><div class="step reveal"><b>I / IDENTIFY</b><h3>Выбираем</h3><p>Проверяем, что имеет смысл автоматизировать.</p></div><div class="step reveal"><b>D / DESIGN</b><h3>Проектируем</h3><p>Описываем сценарий, метрики и контроль.</p></div><div class="step reveal"><b>A / AUTOMATE</b><h3>Внедряем</h3><p>Собираем интеграции и тестируем на примерах.</p></div><div class="step reveal"><b>N / NAVIGATE</b><h3>Улучшаем</h3><p>Измеряем эффект и корректируем решение.</p></div></div>
+</section>
+<section id="faq" class="band">
+ <div class="section-head reveal"><div class="eyebrow">FAQ</div><h2>Частые вопросы.</h2></div>
+ <div class="faq reveal">
+  <details><summary>Нужно ли разбираться в ИИ?</summary><p>Нет. Мы объясняем решение простым языком, показываем рабочий сценарий и передаём инструкции вашей команде.</p></details>
+  <details><summary>Сколько занимает внедрение?</summary><p>Простой сценарий часто можно подготовить за 1–2 недели. Сложные интеграции и корпоративные процессы требуют отдельной оценки.</p></details>
+  <details><summary>Будет ли ИИ полностью заменять сотрудника?</summary><p>Мы ориентируемся на поддержку и автоматизацию повторяющихся задач. Важные решения, нестандартные запросы и чувствительные действия могут оставаться за человеком.</p></details>
+  <details><summary>Что входит в стоимость?</summary><p>Объём работ, интеграции, тестирование и передача описываются в согласованной смете. Сторонние подписки, API и дальнейшее сопровождение выделяются отдельно.</p></details>
+  <details><summary>Можно ли подключить наши CRM и мессенджеры?</summary><p>Часто да — если у сервиса есть доступная интеграция или API. Проверяем совместимость до начала разработки.</p></details>
+  <details><summary>Как начать?</summary><p>Напишите менеджеру в Telegram, расскажите о процессе, который хотите улучшить. Подготовим несколько вариантов решения и предварительную оценку.</p></details>
+ </div>
+</section>
+<section id="contact">
+ <div class="contact reveal"><div class="eyebrow">LIDAN | Smart Business</div><h2>Ваш следующий шаг —<br><span class="gradient">один диалог.</span></h2><p>Расскажите, что отнимает время у команды. Вместе найдём процесс, который стоит автоматизировать первым.</p><a class="cta" href="https://t.me/lidan_manager" target="_blank" rel="noopener">Написать @lidan_manager ↗</a></div>
+</section>
+</main>
+<footer><span>© 2026 LIDAN · Smart Business</span><span>AI solutions, designed around people.</span><a class="textlink" href="https://t.me/lidan_manager" target="_blank" rel="noopener">@lidan_manager ↗</a></footer>
+</div>
+<script id="i18n">
+(() => {
+ const translations={
+ uk:{"Услуги":"Послуги","Решения":"Рішення","Цены":"Ціни","Обсудить проект ↗":"Обговорити проєкт ↗","Что мы создаём":"Що ми створюємо","Умные инструменты.":"Розумні інструменти.","Реальная польза.":"Реальна користь.","Не внедряем ИИ ради моды. Находим повторяющиеся задачи, проектируем удобный сценарий и измеряем результат.":"Не впроваджуємо ШІ заради моди. Знаходимо повторювані завдання, проєктуємо зручний сценарій і вимірюємо результат.","AI-ассистенты":"AI-асистенти","Помогают отвечать клиентам, искать информацию, готовить документы и поддерживать команду 24/7.":"Допомагають відповідати клієнтам, шукати інформацію, готувати документи й підтримувати команду 24/7.","База знаний и ответы":"База знань і відповіді","Поддержка в Telegram":"Підтримка в Telegram","Передача сложных запросов человеку":"Передавання складних запитів людині","Автоматизация процессов":"Автоматизація процесів","Соединяем сервисы и убираем ручную рутину: от заявки до уведомления и отчёта.":"Поєднуємо сервіси й усуваємо ручну рутину: від заявки до сповіщення та звіту.","CRM и формы":"CRM і форми","Интеграции и workflow":"Інтеграції та workflow","Уведомления и отчётность":"Сповіщення та звітність","AI для продаж и маркетинга":"AI для продажів і маркетингу","Ускоряем обработку лидов, создаём контент-процессы и помогаем не терять обращения.":"Прискорюємо обробку лідів, створюємо контент-процеси й допомагаємо не втрачати звернення.","Квалификация лидов":"Кваліфікація лідів","Контент-помощники":"Контент-помічники","Аналитика обращений":"Аналітика звернень","Зачем это вашему бизнесу":"Навіщо це вашому бізнесу","Меньше рутины.":"Менше рутини.","Больше фокуса.":"Більше фокусу.","Когда команда занята копированием данных и одинаковыми ответами, рост становится дороже. Мы проектируем решения под ваш процесс — с контролем, понятными границами и участием человека там, где это важно.":"Коли команда зайнята копіюванням даних і повторюваними відповідями, зростання дорожчає. Ми проєктуємо рішення під ваш процес — із контролем, чіткими межами та участю людини там, де це важливо.","Разобрать вашу задачу ↗":"Розібрати ваше завдання ↗","Автоматическая первичная поддержка":"Автоматична первинна підтримка","Меньше повторяющихся операций":"Менше повторюваних операцій","Единый процесс вместо хаоса":"Єдиний процес замість хаосу","Готовые сценарии":"Готові сценарії","Стартуйте с понятного":"Почніть із зрозумілого","результата.":"результату.","Пакеты — ориентиры для первого разговора. Финальная стоимость зависит от интеграций, объёма данных и требований.":"Пакети — орієнтир для першої розмови. Остаточна вартість залежить від інтеграцій, обсягу даних і вимог.","Telegram AI-консультант":"Telegram AI-консультант","Отвечает по вашим материалам, помогает клиенту сориентироваться и передаёт нестандартный вопрос менеджеру.":"Відповідає на основі ваших матеріалів, допомагає клієнту зорієнтуватися й передає нестандартні запитання менеджеру.","Сценарий диалога":"Сценарій діалогу","Подключение базы знаний":"Підключення бази знань","Тестирование и настройка":"Тестування й налаштування","Автоматизация заявок":"Автоматизація заявок","Заявка попадает в нужную систему, ответственный получает уведомление, клиент — подтверждение.":"Заявка потрапляє до потрібної системи, відповідальний отримує сповіщення, клієнт — підтвердження.","Форма или мессенджер":"Форма або месенджер","Уведомления и логика":"Сповіщення та логіка","AI-помощник продаж":"AI-помічник продажів","Собирает первичную информацию, классифицирует запрос и готовит менеджеру краткое резюме.":"Збирає первинну інформацію, класифікує запит і готує менеджеру короткий підсумок.","Квалификация лида":"Кваліфікація ліда","Интеграция с процессом продаж":"Інтеграція з процесом продажів","Передача человеку":"Передавання людині","Прозрачный старт":"Прозорий старт","Стоимость — без":"Вартість — без","сюрпризов.":"сюрпризів.","Ниже — ориентировочный прайс в USD. Поддержка, платные API и подписки сторонних сервисов обычно оплачиваются отдельно.":"Нижче — орієнтовний прайс у USD. Підтримка, платні API та підписки сторонніх сервісів зазвичай оплачуються окремо.","Базовый":"Базовий","Для одной задачи и простого сценария.":"Для одного завдання та простого сценарію.","Аудит и схема решения":"Аудит і схема рішення","Один базовый AI workflow":"Один базовий AI workflow","Тестовый запуск":"Тестовий запуск","Краткая инструкция":"Коротка інструкція","Популярный выбор":"Популярний вибір","Для процесса с несколькими шагами или интеграциями.":"Для процесу з кількома кроками або інтеграціями.","Проектирование процесса":"Проєктування процесу","2–4 интеграции (по согласованию)":"2–4 інтеграції (за погодженням)","AI-логика и обработка ошибок":"AI-логіка й обробка помилок","Тестирование и передача":"Тестування й передавання","Индивидуально":"Індивідуально","Для комплексного решения и нескольких ролей.":"Для комплексного рішення та кількох ролей.","Архитектура под бизнес":"Архітектура для бізнесу","Мультисценарная автоматизация":"Мультисценарна автоматизація","Расширенные интеграции":"Розширені інтеграції","План поддержки":"План підтримки","Ежемесячное сопровождение: ориентир $99–399/мес. Точная смета и сроки фиксируются после короткого брифинга. Цены на сайте — примерные, не публичная оферта.":"Щомісячний супровід: орієнтовно $99–399/міс. Точний кошторис і строки узгоджуються після короткого брифінгу. Ціни на сайті приблизні й не є публічною офертою.","Как работаем":"Як працюємо","От задачи —":"Від завдання —","к работающей системе.":"до робочої системи.","Погружаемся":"Занурюємося","Уточняем цель, текущий процесс и критерии успеха.":"Уточнюємо мету, поточний процес і критерії успіху.","Проектируем":"Проєктуємо","Согласуем сценарий, инструменты, стоимость и сроки.":"Узгоджуємо сценарій, інструменти, вартість і строки.","Создаём":"Створюємо","Собираем решение, проверяем на тестовых кейсах.":"Збираємо рішення, перевіряємо на тестових кейсах.","Передаём":"Передаємо","Запускаем, обучаем и при необходимости сопровождаем.":"Запускаємо, навчаємо й за потреби супроводжуємо.","Частые вопросы.":"Поширені запитання.","Нужно ли разбираться в ИИ?":"Чи потрібно розбиратися в ШІ?","Нет. Мы объясняем решение простым языком, показываем рабочий сценарий и передаём инструкции вашей команде.":"Ні. Ми пояснюємо рішення простою мовою, показуємо робочий сценарій і передаємо інструкції вашій команді.","Сколько занимает внедрение?":"Скільки триває впровадження?","Простой сценарий часто можно подготовить за 1–2 недели. Сложные интеграции и корпоративные процессы требуют отдельной оценки.":"Простий сценарій часто можна підготувати за 1–2 тижні. Складні інтеграції та корпоративні процеси потребують окремої оцінки.","Будет ли ИИ полностью заменять сотрудника?":"Чи замінить ШІ працівника повністю?","Мы ориентируемся на поддержку и автоматизацию повторяющихся задач. Важные решения, нестандартные запросы и чувствительные действия могут оставаться за человеком.":"Ми зосереджуємося на підтримці й автоматизації повторюваних завдань. Важливі рішення, нестандартні запити та чутливі дії можуть залишатися за людиною.","Что входит в стоимость?":"Що входить у вартість?","Объём работ, интеграции, тестирование и передача описываются в согласованной смете. Сторонние подписки, API и дальнейшее сопровождение выделяются отдельно.":"Обсяг робіт, інтеграції, тестування й передавання описуються в узгодженому кошторисі. Сторонні підписки, API та подальший супровід оплачуються окремо.","Можно ли подключить наши CRM и мессенджеры?":"Чи можна підключити наші CRM і месенджери?","Часто да — если у сервиса есть доступная интеграция или API. Проверяем совместимость до начала разработки.":"Зазвичай так — якщо сервіс має доступну інтеграцію або API. Перевіряємо сумісність до початку розробки.","Как начать?":"Як почати?","Напишите менеджеру в Telegram, расскажите о процессе, который хотите улучшить. Подготовим несколько вариантов решения и предварительную оценку.":"Напишіть менеджеру в Telegram і розкажіть про процес, який хочете покращити. Підготуємо кілька варіантів рішення та попередню оцінку.","Ваш следующий шаг —":"Ваш наступний крок —","один диалог.":"одна розмова.","Расскажите, что отнимает время у команды. Вместе найдём процесс, который стоит автоматизировать первым.":"Розкажіть, що забирає час команди. Разом знайдемо процес, який варто автоматизувати першим.","Написать @lidan_manager ↗":"Написати @lidan_manager ↗","AI solutions, designed around people.":"AI-рішення, створені для людей."},
+ en:{"Услуги":"Services","Решения":"Solutions","Цены":"Pricing","Обсудить проект ↗":"Discuss a project ↗","Что мы создаём":"What we build","Умные инструменты.":"Smart tools.","Реальная польза.":"Real impact.","Не внедряем ИИ ради моды. Находим повторяющиеся задачи, проектируем удобный сценарий и измеряем результат.":"We don't adopt AI for hype. We identify repetitive tasks, design practical workflows, and measure outcomes.","AI-ассистенты":"AI assistants","Помогают отвечать клиентам, искать информацию, готовить документы и поддерживать команду 24/7.":"Help answer customers, find information, prepare documents, and support your team around the clock.","База знаний и ответы":"Knowledge base and answers","Поддержка в Telegram":"Telegram support","Передача сложных запросов человеку":"Escalation to a human","Автоматизация процессов":"Process automation","Соединяем сервисы и убираем ручную рутину: от заявки до уведомления и отчёта.":"Connect tools and remove manual busywork—from incoming request to notification and report.","CRM и формы":"CRM and forms","Интеграции и workflow":"Integrations and workflows","Уведомления и отчётность":"Notifications and reporting","AI для продаж и маркетинга":"AI for sales and marketing","Ускоряем обработку лидов, создаём контент-процессы и помогаем не терять обращения.":"Speed up lead handling, build content workflows, and keep inquiries from slipping through.","Квалификация лидов":"Lead qualification","Контент-помощники":"Content assistants","Аналитика обращений":"Inquiry analytics","Зачем это вашему бизнесу":"Why your business needs it","Меньше рутины.":"Less busywork.","Больше фокуса.":"More focus.","Когда команда занята копированием данных и одинаковыми ответами, рост становится дороже. Мы проектируем решения под ваш процесс — с контролем, понятными границами и участием человека там, где это важно.":"When your team spends time copying data and repeating answers, growth gets more expensive. We design solutions around your workflow, with clear controls and human oversight where it matters.","Разобрать вашу задачу ↗":"Explore your challenge ↗","Автоматическая первичная поддержка":"Automated first-line support","Меньше повторяющихся операций":"Fewer repetitive tasks","Единый процесс вместо хаоса":"One process, less chaos","Готовые сценарии":"Ready-made solutions","Стартуйте с понятного":"Start with a clear","результата.":"outcome.","Пакеты — ориентиры для первого разговора. Финальная стоимость зависит от интеграций, объёма данных и требований.":"Packages are starting points for discussion. Final pricing depends on integrations, data volume, and requirements.","Telegram AI-консультант":"Telegram AI consultant","Отвечает по вашим материалам, помогает клиенту сориентироваться и передаёт нестандартный вопрос менеджеру.":"Answers using your materials, guides customers, and forwards unusual questions to a manager.","Сценарий диалога":"Conversation flow","Подключение базы знаний":"Knowledge base setup","Тестирование и настройка":"Testing and tuning","Автоматизация заявок":"Lead intake automation","Заявка попадает в нужную систему, ответственный получает уведомление, клиент — подтверждение.":"Requests reach the right system, the owner is notified, and the customer receives confirmation.","Форма или мессенджер":"Form or messenger","Уведомления и логика":"Notifications and logic","AI-помощник продаж":"AI sales assistant","Собирает первичную информацию, классифицирует запрос и готовит менеджеру краткое резюме.":"Collects initial details, classifies the inquiry, and prepares a concise summary for sales.","Квалификация лида":"Lead qualification","Интеграция с процессом продаж":"Sales workflow integration","Передача человеку":"Human handoff","Прозрачный старт":"A clear starting point","Стоимость — без":"Pricing without","сюрпризов.":"surprises.","Ниже — ориентировочный прайс в USD. Поддержка, платные API и подписки сторонних сервисов обычно оплачиваются отдельно.":"Indicative prices are in USD. Support, paid APIs, and third-party subscriptions are usually billed separately.","Базовый":"Starter","Для одной задачи и простого сценария.":"For one task and a simple workflow.","Аудит и схема решения":"Audit and solution outline","Один базовый AI workflow":"One basic AI workflow","Тестовый запуск":"Test launch","Краткая инструкция":"Quick guide","Популярный выбор":"Popular choice","Для процесса с несколькими шагами или интеграциями.":"For a multi-step process or integrations.","Проектирование процесса":"Workflow design","2–4 интеграции (по согласованию)":"2–4 integrations (as agreed)","AI-логика и обработка ошибок":"AI logic and error handling","Тестирование и передача":"Testing and handover","Индивидуально":"Custom","Для комплексного решения и нескольких ролей.":"For a comprehensive solution and multiple roles.","Архитектура под бизнес":"Business-specific architecture","Мультисценарная автоматизация":"Multi-workflow automation","Расширенные интеграции":"Advanced integrations","План поддержки":"Support plan","Ежемесячное сопровождение: ориентир $99–399/мес. Точная смета и сроки фиксируются после короткого брифинга. Цены на сайте — примерные, не публичная оферта.":"Monthly support: approx. $99–399. Exact scope and timeline are set after a brief discovery call. Website prices are estimates, not a public offer.","Как работаем":"How we work","От задачи —":"From a challenge —","к работающей системе.":"to a working system.","Погружаемся":"Discover","Уточняем цель, текущий процесс и критерии успеха.":"We clarify goals, current workflows, and success criteria.","Проектируем":"Design","Согласуем сценарий, инструменты, стоимость и сроки.":"We agree on the workflow, tools, budget, and timeline.","Создаём":"Build","Собираем решение, проверяем на тестовых кейсах.":"We build the solution and test real-world cases.","Передаём":"Launch","Запускаем, обучаем и при необходимости сопровождаем.":"We launch, train your team, and support as needed.","Частые вопросы.":"Frequently asked questions.","Нужно ли разбираться в ИИ?":"Do I need AI expertise?","Нет. Мы объясняем решение простым языком, показываем рабочий сценарий и передаём инструкции вашей команде.":"No. We explain the solution clearly, demonstrate it, and provide instructions for your team.","Сколько занимает внедрение?":"How long does implementation take?","Простой сценарий часто можно подготовить за 1–2 недели. Сложные интеграции и корпоративные процессы требуют отдельной оценки.":"A simple workflow can often be ready in 1–2 weeks. Complex integrations and enterprise processes need a separate estimate.","Будет ли ИИ полностью заменять сотрудника?":"Will AI replace an employee entirely?","Мы ориентируемся на поддержку и автоматизацию повторяющихся задач. Важные решения, нестандартные запросы и чувствительные действия могут оставаться за человеком.":"We focus on assistance and repetitive-task automation. Important decisions, unusual requests, and sensitive actions can remain human-led.","Что входит в стоимость?":"What is included in the price?","Объём работ, интеграции, тестирование и передача описываются в согласованной смете. Сторонние подписки, API и дальнейшее сопровождение выделяются отдельно.":"Scope, integrations, testing, and handover are listed in the agreed estimate. Third-party subscriptions, APIs, and ongoing support are separate.","Можно ли подключить наши CRM и мессенджеры?":"Can you connect our CRM and messengers?","Часто да — если у сервиса есть доступная интеграция или API. Проверяем совместимость до начала разработки.":"Often yes, if the service offers an integration or API. We check compatibility before development.","Как начать?":"How do I get started?","Напишите менеджеру в Telegram, расскажите о процессе, который хотите улучшить. Подготовим несколько вариантов решения и предварительную оценку.":"Message us on Telegram and tell us which process you'd like to improve. We'll suggest options and an initial estimate.","Ваш следующий шаг —":"Your next step —","один диалог.":"one conversation.","Расскажите, что отнимает время у команды. Вместе найдём процесс, который стоит автоматизировать первым.":"Tell us what takes up your team's time. We'll identify the first process worth automating.","Написать @lidan_manager ↗":"Message @lidan_manager ↗","AI solutions, designed around people.":"AI solutions, designed around people."}
+ };
+ Object.assign(translations.uk,{"Бизнес.":"Бізнес.","На новой орбите.":"На новій орбіті.","LIDAN — интеллектуальные решения, которые освобождают время команды, превращают процессы в систему и помогают бизнесу расти.":"LIDAN — інтелектуальні рішення, що звільняють час команди, перетворюють процеси на систему та допомагають бізнесу зростати.","Найти своё решение":"Знайти своє рішення","Связаться с менеджером":"Зв’язатися з менеджером","от $390":"від $390","от $490":"від $490","от $690":"від $690","/ запуск":"/ запуск","Для одной задачи и простого сценария.":"Для одного завдання та простого сценарію.","от $1,900":"від $1,900","от $1,900":"від $1,900","Human":"Людина","SCROLL TO EXPLORE  ↓":"ГОРТАЙТЕ ДАЛІ  ↓","© 2026 LIDAN · Smart Business":"© 2026 LIDAN · Smart Business"});
+ Object.assign(translations.en,{"Бизнес.":"Business.","На новой орбите.":"On a new orbit.","LIDAN — интеллектуальные решения, которые освобождают время команды, превращают процессы в систему и помогают бизнесу расти.":"LIDAN builds intelligent solutions that give your team time back, systemize workflows, and help your business grow.","Найти своё решение":"Find your solution","Связаться с менеджером":"Talk to our manager","от $390":"from $390","от $490":"from $490","от $690":"from $690","/ запуск":"/ launch","от $1,900":"from $1,900","Human":"Human","SCROLL TO EXPLORE  ↓":"SCROLL TO EXPLORE  ↓"});
+ Object.assign(translations.uk,{'Попробуйте на примере':'Спробуйте на прикладі','Ответ клиенту — за секунды':'Відповідь клієнту — за секунди','Сгенерировать демо-ответ ↗':'Створити демо-відповідь ↗','Оцените потенциал':'Оцініть потенціал','можно вернуть команде?':'можна повернути команді?','Быстрый AI-аудит':'Швидкий AI-аудит','С чего начать':'З чого почати','автоматизацию?':'автоматизацію?','Получить гипотезу ↗':'Отримати гіпотезу ↗','Сценарии в цифрах':'Сценарії в цифрах','Не выдумываем кейсы.':'Не вигадуємо кейси.','Ответственный AI':'Відповідальний AI','с человеческим контролем.':'з людським контролем.','Фирменный подход LIDAN':'Фірмовий підхід LIDAN','От узкого места к росту.':'Від вузького місця до зростання.'});
+ Object.assign(translations.en,{'Попробуйте на примере':'Try it out','Ответ клиенту — за секунды':'A customer reply in seconds','Сгенерировать демо-ответ ↗':'Generate demo reply ↗','Оцените потенциал':'Estimate the potential','можно вернуть команде?':'could your team reclaim?','Быстрый AI-аудит':'Quick AI audit','С чего начать':'Where to start','автоматизацию?':'with automation?','Получить гипотезу ↗':'Get a recommendation ↗','Сценарии в цифрах':'Scenarios with metrics','Не выдумываем кейсы.':"We don't fabricate case studies.",'Ответственный AI':'Responsible AI','с человеческим контролем.':'with human oversight.','Фирменный подход LIDAN':'The LIDAN approach','От узкого места к росту.':'From bottleneck to growth.'});
+ Object.assign(translations.uk,{
+ 'Услуги':'Послуги','Решения':'Рішення','Демо':'Демо','Калькулятор':'Калькулятор','Цены':'Ціни','Обговорити проєкт ↗':'Обговорити проєкт ↗','Бизнес.':'Бізнес.','На новой орбите.':'На новій орбіті.','Интерактивная демонстрация типового процесса. Это локальный пример, не подключённый к реальному AI или CRM.':'Інтерактивна демонстрація типового процесу. Це локальний приклад, не підключений до реального AI або CRM.','Введите типичный вопрос клиента и посмотрите пример ответа с эскалацией менеджеру.':'Введіть типове запитання клієнта й перегляньте приклад відповіді з передаванням менеджеру.','Вопрос клиента':'Запитання клієнта','Здесь появится демонстрационный ответ и следующий шаг процесса.':'Тут з’явиться демонстраційна відповідь і наступний крок процесу.','СХЕМА АВТОМАТИЗАЦИИ':'СХЕМА АВТОМАТИЗАЦІЇ','От сообщения — к действию':'Від повідомлення — до дії','Сценарий может соединять каналы, AI и инструменты команды. Реальные интеграции согласуются отдельно.':'Сценарій може поєднувати канали, AI та інструменти команди. Реальні інтеграції узгоджуються окремо.','Заявка':'Заявка','AI-анализ':'AI-аналіз','Менеджер':'Менеджер','Контрольная точка: нестандартные запросы, ошибки и важные решения передаются человеку.':'Контрольна точка: нестандартні запити, помилки та важливі рішення передаються людині.','Измените параметры — получите ориентировочную оценку экономии. Это модель, не обещание результата.':'Змініть параметри — отримайте орієнтовну оцінку економії. Це модель, а не обіцянка результату.','Сотрудников выполняют задачу':'Працівників виконують завдання','Часов рутины на человека в неделю':'Годин рутини на людину на тиждень','Стоимость часа работы, $':'Вартість години роботи, $','Доля процесса, которую удастся автоматизировать':'Частка процесу, яку вдасться автоматизувати','20% — осторожный сценарий':'20% — обережний сценарій','40% — умеренный сценарий':'40% — помірний сценарій','60% — высокий сценарий':'60% — високий сценарій','ВАША ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА':'ВАША ПОПЕРЕДНЯ ОЦІНКА','Реальный эффект зависит от качества процесса, стоимости внедрения, обслуживания и доли задач, требующих участия человека.':'Реальний ефект залежить від якості процесу, вартості впровадження, обслуговування та частки завдань, що потребують участі людини.','Обсудить расчёт ↗':'Обговорити розрахунок ↗','Ответьте на три вопроса — получите стартовую гипотезу для обсуждения.':'Дайте відповіді на три запитання — отримайте початкову гіпотезу для обговорення.','Где больше всего ручной работы?':'Де найбільше ручної роботи?','Ответы клиентам и поддержка':'Відповіді клієнтам і підтримка','Обработка заявок и продажи':'Обробка заявок і продажі','Внутренние процессы и отчётность':'Внутрішні процеси та звітність','Контент и маркетинг':'Контент і маркетинг','Какие инструменты используете?':'Які інструменти використовуєте?','Что важнее всего?':'Що найважливіше?','Быстрее отвечать клиентам':'Швидше відповідати клієнтам','Снизить ручную нагрузку':'Зменшити ручне навантаження','Не терять лиды и продажи':'Не втрачати ліди й продажі','Упорядочить данные и отчёты':'Упорядкувати дані та звіти','Рекомендация появится здесь. Это предварительная гипотеза, не технический аудит.':'Рекомендація з’явиться тут. Це попередня гіпотеза, а не технічний аудит.','Не вводите персональные данные клиентов, пароли или конфиденциальную информацию.':'Не вводьте персональні дані клієнтів, паролі або конфіденційну інформацію.','Ниже — иллюстративные сценарии с условными исходными данными. Они не являются результатами реальных клиентов.':'Нижче — ілюстративні сценарії з умовними вихідними даними. Це не результати реальних клієнтів.','Первичная поддержка':'Первинна підтримка','Обработка лидов':'Обробка лідів','Сначала базовая метрика':'Спочатку базова метрика','До запуска фиксируем исходные показатели, после — сравниваем одинаковые периоды и условия.':'До запуску фіксуємо початкові показники, після — порівнюємо однакові періоди й умови.','Время и стоимость процесса':'Час і вартість процесу','Ошибки и качество':'Помилки та якість','Обратная связь команды':'Зворотний зв’язок команди','Продумываем не только то, что система делает, но и её границы.':'Продумуємо не лише те, що робить система, а й її межі.','Проверка качества':'Перевірка якості','Тестируем типовые и нестандартные запросы, уточняем источники ответов и отмечаем ограничения.':'Тестуємо типові й нестандартні запити, уточнюємо джерела відповідей і позначаємо обмеження.','Доступ и данные':'Доступ і дані','Согласуем нужные данные, права доступа, используемые сервисы и порядок хранения до внедрения.':'Узгоджуємо потрібні дані, права доступу, використані сервіси та порядок зберігання до впровадження.','Что мы не обещаем автоматизировать без проверки':'Що ми не обіцяємо автоматизувати без перевірки','Мы не заявляем, что AI безошибочен или должен самостоятельно принимать чувствительные решения. Сначала оцениваем риски, добавляем контроль и оставляем человеку право вмешаться.':'Ми не стверджуємо, що AI безпомилковий або має самостійно ухвалювати чутливі рішення. Спочатку оцінюємо ризики, додаємо контроль і залишаємо людині право втрутитися.','Пять шагов, которые помогают не автоматизировать хаос, а улучшать конкретный процесс.':'П’ять кроків, які допомагають не автоматизувати хаос, а покращувати конкретний процес.','Находим':'Знаходимо','Определяем узкое место и повторяющуюся работу.':'Визначаємо вузьке місце й повторювану роботу.','Выбираем':'Обираємо','Проверяем, что имеет смысл автоматизировать.':'Перевіряємо, що має сенс автоматизувати.','Описываем сценарий, метрики и контроль.':'Описуємо сценарій, метрики та контроль.','Внедряем':'Впроваджуємо','Собираем интеграции и тестируем на примерах.':'Створюємо інтеграції та тестуємо на прикладах.','Улучшаем':'Покращуємо','Измеряем эффект и корректируем решение.':'Вимірюємо ефект і коригуємо рішення.','Напишите менеджеру в Telegram, расскажите о процессе, который хотите улучшить. Подготовим несколько вариантов решения и предварительную оценку.':'Напишіть менеджеру в Telegram і розкажіть про процес, який хочете покращити. Підготуємо кілька варіантів рішення та попередню оцінку.'
+ });
+ Object.assign(translations.en,{
+ 'Услуги':'Services','Решения':'Solutions','Демо':'Demo','Калькулятор':'Calculator','Цены':'Pricing','Интерактивная демонстрация типового процесса. Это локальный пример, не подключённый к реальному AI или CRM.':'An interactive demonstration of a typical workflow. This local example is not connected to a live AI or CRM.','Введите типичный вопрос клиента и посмотрите пример ответа с эскалацией менеджеру.':'Enter a typical customer question to see a sample answer and escalation to a manager.','Вопрос клиента':'Customer question','Здесь появится демонстрационный ответ и следующий шаг процесса.':'A sample response and the next workflow step will appear here.','СХЕМА АВТОМАТИЗАЦИИ':'AUTOMATION FLOW','От сообщения — к действию':'From message to action','Сценарий может соединять каналы, AI и инструменты команды. Реальные интеграции согласуются отдельно.':'A workflow can connect channels, AI, and team tools. Actual integrations are scoped separately.','Заявка':'Request','AI-анализ':'AI analysis','Менеджер':'Manager','Контрольная точка: нестандартные запросы, ошибки и важные решения передаются человеку.':'Control point: unusual requests, errors, and important decisions are handed to a person.','Измените параметры — получите ориентировочную оценку экономии. Это модель, не обещание результата.':'Adjust the inputs for an indicative savings estimate. This is a model, not a promise of results.','Сотрудников выполняют задачу':'Employees performing this task','Часов рутины на человека в неделю':'Routine hours per person each week','Стоимость часа работы, $':'Hourly work cost, $','Доля процесса, которую удастся автоматизировать':'Share of the process that can be automated','20% — осторожный сценарий':'20% — conservative scenario','40% — умеренный сценарий':'40% — moderate scenario','60% — высокий сценарий':'60% — ambitious scenario','ВАША ПРЕДВАРИТЕЛЬНАЯ ОЦЕНКА':'YOUR INITIAL ESTIMATE','Реальный эффект зависит от качества процесса, стоимости внедрения, обслуживания и доли задач, требующих участия человека.':'Actual impact depends on process quality, implementation and maintenance costs, and the share of tasks that still require human involvement.','Обсудить расчёт ↗':'Discuss this estimate ↗','Ответьте на три вопроса — получите стартовую гипотезу для обсуждения.':'Answer three questions to get an initial hypothesis to discuss.','Где больше всего ручной работы?':'Where is most work still manual?','Ответы клиентам и поддержка':'Customer replies and support','Обработка заявок и продажи':'Lead handling and sales','Внутренние процессы и отчётность':'Internal processes and reporting','Контент и маркетинг':'Content and marketing','Какие инструменты используете?':'Which tools do you use?','Что важнее всего?':'What matters most?','Быстрее отвечать клиентам':'Reply to customers faster','Снизить ручную нагрузку':'Reduce manual workload','Не терять лиды и продажи':'Stop losing leads and sales','Упорядочить данные и отчёты':'Organize data and reports','Рекомендация появится здесь. Это предварительная гипотеза, не технический аудит.':'Your recommendation will appear here. This is an initial hypothesis, not a technical audit.','Не вводите персональные данные клиентов, пароли или конфиденциальную информацию.':'Do not enter customer personal data, passwords, or confidential information.','Ниже — иллюстративные сценарии с условными исходными данными. Они не являются результатами реальных клиентов.':'The examples below use hypothetical inputs and are not results from real clients.','Первичная поддержка':'First-line support','Обработка лидов':'Lead handling','Сначала базовая метрика':'Start with a baseline metric','До запуска фиксируем исходные показатели, после — сравниваем одинаковые периоды и условия.':'Record baseline metrics before launch, then compare equivalent periods and conditions.','Время и стоимость процесса':'Process time and cost','Ошибки и качество':'Errors and quality','Обратная связь команды':'Team feedback','Продумываем не только то, что система делает, но и её границы.':'We plan not only what the system does, but also its boundaries.','Проверка качества':'Quality checks','Тестируем типовые и нестандартные запросы, уточняем источники ответов и отмечаем ограничения.':'We test common and unusual requests, verify answer sources, and document limitations.','Доступ и данные':'Access and data','Согласуем нужные данные, права доступа, используемые сервисы и порядок хранения до внедрения.':'We agree on required data, access permissions, services, and retention before implementation.','Что мы не обещаем автоматизировать без проверки':'What we will not automate without review','Мы не заявляем, что AI безошибочен или должен самостоятельно принимать чувствительные решения. Сначала оцениваем риски, добавляем контроль и оставляем человеку право вмешаться.':'We do not claim AI is error-free or should make sensitive decisions alone. We assess risks, add controls, and preserve the ability for a person to intervene.','Пять шагов, которые помогают не автоматизировать хаос, а улучшать конкретный процесс.':'Five steps to improve a specific workflow instead of automating chaos.','Находим':'Locate','Определяем узкое место и повторяющуюся работу.':'Identify the bottleneck and repetitive work.','Выбираем':'Identify','Проверяем, что имеет смысл автоматизировать.':'Decide what is worth automating.','Описываем сценарий, метрики и контроль.':'Define the workflow, metrics, and controls.','Внедряем':'Automate','Собираем интеграции и тестируем на примерах.':'Build integrations and test with examples.','Улучшаем':'Navigate','Измеряем эффект и корректируем решение.':'Measure impact and refine the solution.'
+ });
+ const attributeTranslations={
+ uk:{'Например: Сколько стоит внедрение AI-консультанта?':'Наприклад: Скільки коштує впровадження AI-консультанта?','Например: Telegram, Google Sheets, CRM':'Наприклад: Telegram, Google Sheets, CRM'},
+ en:{'Например: Сколько стоит внедрение AI-консультанта?':'For example: How much does an AI consultant cost?','Например: Telegram, Google Sheets, CRM':'For example: Telegram, Google Sheets, CRM'}
+ };
+ const selector=document.getElementById('language');
+ const attributeOriginals=new WeakMap();
+ function translateAttributes(lang){document.querySelectorAll('[placeholder],[title],[aria-label]').forEach(el=>['placeholder','title','aria-label'].forEach(attr=>{if(!el.hasAttribute(attr))return;const key=el.tagName+':'+attr;if(!attributeOriginals.has(el))attributeOriginals.set(el,{});const saved=attributeOriginals.get(el);if(!(attr in saved))saved[attr]=el.getAttribute(attr);const original=saved[attr];el.setAttribute(attr,(attributeTranslations[lang]||{})[original]||original);}));}
+ selector.addEventListener('change',()=>translateAttributes(selector.value));
+ translateAttributes('uk');
+ const originals=new WeakMap();
+ function setLanguage(lang){document.documentElement.lang=lang;const dict=translations[lang]||{};const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let node;while(node=walker.nextNode()){if(!originals.has(node))originals.set(node,node.nodeValue);const source=originals.get(node),key=source.trim();node.nodeValue=dict[key]?source.replace(key,dict[key]):source;} }
+ selector.addEventListener('change',()=>setLanguage(selector.value));
+ setLanguage('uk');
+})();
+</script>
+<script>
+(() => {
+ const lang=()=>document.documentElement.lang||'uk';
+ const demo=document.getElementById('demo-run'),question=document.getElementById('demo-question'),demoResult=document.getElementById('demo-result');
+ demo.addEventListener('click',()=>{const q=question.value.trim();if(!q){demoResult.textContent=lang()==='en'?'Enter a sample customer question first.':lang()==='ru'?'Сначала введите пример вопроса клиента.':'Спочатку введіть приклад запитання клієнта.';return;}const l=lang();demoResult.textContent=l==='en'?`Demo reply: Thanks for your question. Exact scope and price depend on your workflow and integrations; a manager should confirm the details.\nNext: classify the inquiry and pass it to the manager.`:l==='ru'?`Демо-ответ: Спасибо за вопрос. Точная стоимость и объём зависят от процесса и интеграций; детали подтвердит менеджер.\nСледующий шаг: классифицировать запрос и передать менеджеру.`:`Демо-відповідь: Дякуємо за запитання. Точна вартість і обсяг залежать від процесу та інтеграцій; деталі підтвердить менеджер.\nНаступний крок: класифікувати запит і передати менеджеру.`;});
+ const people=document.getElementById('calc-people'),hours=document.getElementById('calc-hours'),rate=document.getElementById('calc-rate'),share=document.getElementById('calc-share'),hoursOut=document.getElementById('calc-hours-result'),moneyOut=document.getElementById('calc-money-result');
+ function calculate(){const p=Math.max(0,Number(people.value)||0),h=Math.max(0,Number(hours.value)||0),r=Math.max(0,Number(rate.value)||0),s=Number(share.value)||0;const saved=p*h*s*4.33,cost=saved*r;const fmt=new Intl.NumberFormat(lang()==='en'?'en-US':lang()==='ru'?'ru-RU':'uk-UA',{maximumFractionDigits:0});hoursOut.textContent=`≈ ${fmt.format(saved)} ${lang()==='en'?'hours/month':lang()==='ru'?'часов/месяц':'годин/місяць'}`;moneyOut.textContent=(lang()==='en'?'Potentially frees about ':lang()==='ru'?'Потенциально высвобождает около ':'Потенційно вивільняє близько ')+`$${fmt.format(cost)} `+(lang()==='en'?'of work capacity per month.':lang()==='ru'?'рабочего времени в месяц.':'робочого часу на місяць.');}
+ [people,hours,rate,share].forEach(el=>el.addEventListener('input',calculate));document.getElementById('language').addEventListener('change',calculate);calculate();
+ document.getElementById('audit-run').addEventListener('click',()=>{const area=document.getElementById('audit-area').value,tools=document.getElementById('audit-tools').value.trim(),goal=document.getElementById('audit-goal').value,l=lang();const recommendations={support:['Start with an FAQ/knowledge-base assistant, define human handoff, and measure first-response time.','Почніть із FAQ/асистента на базі знань, налаштуйте передавання людині та вимірюйте час першої відповіді.','Начните с FAQ/ассистента на базе знаний, настройте передачу человеку и измеряйте время первого ответа.'],leads:['Map lead sources into one pipeline, auto-label inquiries, and notify an owner. Track response time and lost leads.','Зведіть джерела лідів в один потік, автоматично позначайте запити й сповіщайте відповідального. Відстежуйте час відповіді та втрачені ліди.','Сведите источники лидов в единый поток, автоматически помечайте запросы и уведомляйте ответственного. Отслеживайте время ответа и потерянные лиды.'],ops:['Choose one repetitive handoff or report, automate the transfer, and keep an audit trail.','Оберіть одну повторювану передачу даних або звіт, автоматизуйте її та збережіть журнал дій.','Выберите одну повторяющуюся передачу данных или отчёт, автоматизируйте её и сохраните журнал действий.'],content:['Create a reusable content brief and approval workflow; keep a person responsible for factual review.','Створіть шаблон контент-брифу та процес погодження; залиште фактчек за людиною.','Создайте шаблон контент-брифа и процесс согласования; оставьте проверку фактов человеку.']};const rec=recommendations[area][l==='en'?0:l==='uk'?1:2],intro=l==='en'?'Suggested hypothesis':l==='ru'?'Предварительная гипотеза':'Попередня гіпотеза';document.getElementById('audit-result').textContent=`${intro}: ${rec} ${goal? (l==='en'?'Priority: ':l==='ru'?'Приоритет: ':'Пріоритет: ')+goal+'.':''} ${tools?(l==='en'?'Tools to check: ':l==='ru'?'Инструменты для проверки: ':'Інструменти для перевірки: ')+tools+'.':''}`;});
+ const extra={uk:{'Попробуйте на примере':'Спробуйте на прикладі','Ответ клиенту — за секунды':'Відповідь клієнту — за секунди','Сгенерировать демо-ответ ↗':'Створити демо-відповідь ↗','Оцените потенциал':'Оцініть потенціал','можно вернуть команде?':'можна повернути команді?','Быстрый AI-аудит':'Швидкий AI-аудит','С чего начать':'З чого почати','автоматизацию?':'автоматизацію?','Получить гипотезу ↗':'Отримати гіпотезу ↗','Сценарии в цифрах':'Сценарії в цифрах','Не выдумываем кейсы.':'Не вигадуємо кейси.','Ответственный AI':'Відповідальний AI','с человеческим контролем.':'з людським контролем.','Фирменный подход LIDAN':'Фірмовий підхід LIDAN','От узкого места к росту.':'Від вузького місця до зростання.'},en:{'Попробуйте на примере':'Try it out','Ответ клиенту — за секунды':'A customer reply in seconds','Сгенерировать демо-ответ ↗':'Generate demo reply ↗','Оцените потенциал':'Estimate the potential','можно вернуть команде?':'could your team reclaim?','Быстрый AI-аудит':'Quick AI audit','С чего начать':'Where to start','автоматизацию?':'with automation?','Получить гипотезу ↗':'Get a recommendation ↗','Сценарии в цифрах':'Scenarios with metrics','Не выдумываем кейсы.':"We don't fabricate case studies.",'Ответственный AI':'Responsible AI','с человеческим контролем.':'with human oversight.','Фирменный подход LIDAN':'The LIDAN approach','От узкого места к росту.':'From bottleneck to growth.'}};
+ const langSelect=document.getElementById('language');
+ const canvas=document.getElementById('cosmos'),ctx=canvas.getContext('2d');
+ let w,h,dpr,stars=[],scroll=0;
+ function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);stars=Array.from({length:Math.min(260,Math.floor(w*h/5000))},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random(),r:Math.random()*1.4+.25,p:Math.random()*6.28}))}
+ function draw(t){ctx.clearRect(0,0,w,h);let shift=scroll*.00065;let hue=225+scroll*.12;for(const s of stars){let y=(s.y-scroll*(.09+s.z*.24)+h*4)%h;let tw=.45+.55*Math.sin(t*.001+s.p);ctx.fillStyle=`hsla(${hue+s.z*65},80%,${70+s.z*25}%,${tw*(.35+s.z*.6)})`;ctx.beginPath();ctx.arc(s.x,y,s.r*(.5+s.z),0,Math.PI*2);ctx.fill()}
+ let grad=ctx.createRadialGradient(w*.5,h*.6,0,w*.5,h*.6,Math.max(w,h)*.8);grad.addColorStop(0,`hsla(${235+shift*900},75%,30%,.10)`);grad.addColorStop(1,'transparent');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);requestAnimationFrame(draw)}
+ addEventListener('resize',resize);addEventListener('scroll',()=>{scroll=scrollY;let p=Math.min(scroll/(document.body.scrollHeight-innerHeight||1),1);document.getElementById('aurora').style.background=`radial-gradient(ellipse at ${20+p*60}% ${15+p*70}%, hsla(${245+p*100},75%,55%,.20),transparent 42%),radial-gradient(ellipse at ${85-p*50}% ${80-p*45}%,hsla(${190+p*65},75%,45%,.18),transparent 38%)`});
+ resize();requestAnimationFrame(draw);
+ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
 </body>
 </html>
