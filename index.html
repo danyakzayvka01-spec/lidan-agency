@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIDAN | Smart Business — Агентство ШІ-рішень</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #000000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+        }
+
+        .apple-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #2997ff 0%, #0066cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(29, 29, 31, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(41, 151, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+        }
+
+        /* Scroll margin compensation for sticky header */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Infinite marquee animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            animation: marquee 25s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+
+    <!-- 3D Canvas Background -->
+    <canvas id="canvas3d" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 apple-blur border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-lg font-semibold tracking-tight text-white flex items-center gap-2">
+                <span class="text-blue-500 font-bold">LIDAN</span>
+                <span class="text-xs text-neutral-400 font-normal border-l border-white/20 pl-2">Smart Business</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm text-neutral-400 font-medium">
+                <a href="#why-us" class="hover:text-white transition-colors">Чому ми</a>
+                <a href="#solutions" class="hover:text-white transition-colors">Готові рішення</a>
+                <a href="#services" class="hover:text-white transition-colors">Послуги</a>
+                <a href="#tariffs" class="hover:text-white transition-colors">Тарифи</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+            </div>
+            <a href="https://t.me/lidan_manager" target="_blank" class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-medium px-4 py-2 rounded-full transition-all tracking-tight">
+                Обговорити проект
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-6 z-10">
+            <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide text-blue-400 reveal">
+                <svg class="w-3 h-3 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg>
+                Офіційний партнер OpenAI технологій
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gradient reveal" style="transition-delay: 100ms;">
+                Трансформуйте бізнес <br><span class="accent-gradient">автономними ШІ-агентами</span>
+            </h1>
+            <p class="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed reveal" style="transition-delay: 200ms;">
+                Агентство <strong>LIDAN</strong> розробляє інтелектуальних ШІ-асистентів, які оптимізують процеси, замінюють рутину та збільшують конверсію продажів 24/7 без лікарняних та людського фактору.
+            </p>
+            <div class="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center reveal" style="transition-delay: 300ms;">
+                <a href="https://t.me/lidan_manager" target="_blank" class="w-full sm:w-auto bg-[#f5f5f7] hover:bg-white text-black font-semibold px-8 py-3.5 rounded-full text-base transition-all">
+                    Запустити ШІ-пілот
+                </a>
+                <a href="#solutions" class="w-full sm:w-auto text-blue-400 hover:text-blue-300 font-medium px-6 py-3 text-base flex items-center justify-center gap-1 group">
+                    Наші рішення <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tech Stack Marquee Section (OpenAI & Partners) -->
+    <section class="py-10 bg-neutral-900/30 border-y border-white/5 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 mb-4 text-center">
+            <p class="text-xs uppercase tracking-widest text-neutral-500 font-semibold">Наш технологічний стек та партнери</p>
+        </div>
+        <div class="flex overflow-hidden select-none gap-16 relative">
+            <div class="flex items-center justify-around min-w-full shrink-0 gap-16 animate-marquee">
+                <span class="text-xl font-bold tracking-wider text-neutral-400 flex items-center gap-2">🟢 OpenAI Partner</span>
+                <span class="text-xl font-medium text-neutral-500">KeyCRM Integrated</span>
+                <span class="text-xl font-bold tracking-tight text-neutral-400">Anthropic Claude</span>
+                <span class="text-xl font-medium text-neutral-500">SalesDrive CRM</span>
+                <span class="text-xl font-semibold tracking-wide text-neutral-400">Python AI Ecosystem</span>
+                <span class="text-xl font-medium text-neutral-500">LangChain Framework</span>
+            </div>
+            <div class="flex items-center justify-around min-w-full shrink-0 gap-16 animate-marquee" aria-hidden="true">
+                <span class="text-xl font-bold tracking-wider text-neutral-400 flex items-center gap-2">🟢 OpenAI Partner</span>
+                <span class="text-xl font-medium text-neutral-500">KeyCRM Integrated</span>
+                <span class="text-xl font-bold tracking-tight text-neutral-400">Anthropic Claude</span>
+                <span class="text-xl font-medium text-neutral-500">SalesDrive CRM</span>
+                <span class="text-xl font-semibold tracking-wide text-neutral-400">Python AI Ecosystem</span>
+                <span class="text-xl font-medium text-neutral-500">LangChain Framework</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section (Зачем и почему это нужно клиенту) -->
+    <section id="why-us" class="max-w-6xl mx-auto px-6 py-32 space-y-16">
+        <div class="text-center max-w-3xl mx-auto space-y-4 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Навіщо вашому бізнесу ШІ від <span class="text-blue-500">LIDAN</span>?</h2>
+            <p class="text-neutral-400 text-lg font-light">Світ змінюється надто швидко. ШІ — це не просто тренд, це головна конкурентна перевага сучасності.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal">
+                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">10x</div>
+                <h3 class="text-xl font-semibold text-white">Шалена економія бюджету</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Один ШІ-агент обробляє тисячі запитів одночасно. Він замінює цілий штат менеджерів першої лінії, не вимагає робочого місця, податків та зарплати.
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 150ms;">
+                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">0с</div>
+                <h3 class="text-xl font-semibold text-white">Миттєва швидкість відповіді</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Клієнт отримує точну відповідь за 2 секунди у будь-який час дня чи ночі. Жодних втрачених лідів у вихідні чи вечірні години.
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 300ms;">
+                <div class="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 text-xl font-bold">100%</div>
+                <h3 class="text-xl font-semibold text-white">Робота без помилок</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Завдяки базі знань та моделям OpenAI, ШІ ідеально знає ваш продукт, не втомлюється, не піддається емоціям та завжди спілкується ввічливо.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready Solutions Section (Готовые решения) -->
+    <section id="solutions" class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
+            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Швидкий старт</div>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Готові коробкові рішення</h2>
+            <p class="text-neutral-400 text-lg font-light">Впровадження перевірених архітектур під ключ за 7–14 днів.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between reveal">
+                <div class="space-y-6">
+                    <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full font-medium">Для E-Commerce та Послуг</span>
+                    <h3 class="text-2xl font-bold text-gradient">ШІ-Продавець для Месенджерів</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Інтегрується в Telegram, Viber або Instagram. Веде клієнта від вітання до вибору товару, консультує, закриває заперечення та автоматично створює угоду у вашій CRM (KeyCRM / SalesDrive).
+                    </p>
+                    <ul class="space-y-2 text-xs text-neutral-300">
+                        <li class="flex items-center gap-2">✓ Повна інтеграція з каталогом товарів</li>
+                        <li class="flex items-center gap-2">✓ Автоматична вигрузка лідів у CRM</li>
+                    </ul>
+                </div>
+                <div class="pt-8">
+                    <a href="https://t.me/lidan_manager" target="_blank" class="inline-block bg-white/5 hover:bg-white/10 text-white font-medium text-xs px-5 py-2.5 rounded-full transition-all">
+                        Хочу таке рішення
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: 150ms;">
+                <div class="space-y-6">
+                    <span class="bg-blue-500/10 text-blue-400 text-xs px-3 py-1 rounded-full font-medium">Для Онлайн-Шкіл та B2B</span>
+                    <h3 class="text-2xl font-bold text-gradient">ШІ-Супровід та Інбординг</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">
+                        Розумний асистент, що навчається на ваших внутрішніх регламентах, інструкціях або базі знань. Миттєво відповідає на складні технічні питання користувачів, допомагає з адаптацією клієнтів.
+                    </p>
+                    <ul class="space-y-2 text-xs text-neutral-300">
+                        <li class="flex items-center gap-2">✓ Навчання на базі документів будь-якого об'єму</li>
+                        <li class="flex items-center gap-2">✓ Зниження навантаження на техпідтримку на 80%</li>
+                    </ul>
+                </div>
+                <div class="pt-8">
+                    <a href="https://t.me/lidan_manager" target="_blank" class="inline-block bg-white/5 hover:bg-white/10 text-white font-medium text-xs px-5 py-2.5 rounded-full transition-all">
+                        Хочу таке рішення
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="max-w-6xl mx-auto px-6 py-32 space-y-16">
+        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
+            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Екосистема</div>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Послуги розробки</h2>
+            <p class="text-neutral-400 text-lg font-light">Створюємо індивідуальні ШІ-системи будь-якої складності під бізнес-завдання.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal">
+                <h3 class="text-xl font-semibold text-white">1. Проектування архітектури</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Аналізуємо ваші бізнес-процеси, виявляємо рутинні завдання та розробляємо детальну карту впровадження ШІ та LLM-моделей.
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 150ms;">
+                <h3 class="text-xl font-semibold text-white">2. Кастомна розробка</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Програмуємо агентів на базі OpenAI API, налаштовуємо RAG-системи (робота зі складними базами знань) та логіку дій агента.
+                </p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl space-y-4 reveal" style="transition-delay: 300ms;">
+                <h3 class="text-xl font-semibold text-white">3. CRM Інтеграція</h3>
+                <p class="text-sm text-neutral-400 leading-relaxed">
+                    Безшовно зв'язуємо штучний інтелект з вашими поточними інструментами: KeyCRM, SalesDrive, чатами та ERP-системами.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tariffs Section -->
+    <section id="tariffs" class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+        <div class="text-center max-w-2xl mx-auto space-y-4 reveal">
+            <div class="text-xs uppercase tracking-widest text-blue-500 font-semibold">Вартість</div>
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Прозорі тарифи</h2>
+            <p class="text-neutral-400 text-lg font-light">Оберіть рівень автоматизації, що відповідає масштабам вашої компанії.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+            <!-- Tariff 1 -->
+            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full reveal">
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-neutral-300">AI Pilot</h3>
+                    <div class="text-4xl font-bold text-white">$850</div>
+                    <p class="text-xs text-neutral-400">Швидкий тест ШІ-технологій у вашому бізнесі.</p>
+                    <div class="h-px bg-white/10 my-4"></div>
+                    <ul class="space-y-2 text-xs text-neutral-300">
+                        <li>• Базовий ШІ-асистент (1 месенджер)</li>
+                        <li>• Навчання на невеликій базі знань</li>
+                        <li>• Стандартна інтеграція CRM</li>
+                        <li>• До 14 днів розробки</li>
+                    </ul>
+                </div>
+                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-white/5 hover:bg-white/10 text-white font-medium text-xs py-3 rounded-full transition-all">
+                    Замовити Pilot
+                </a>
+            </div>
+
+            <!-- Tariff 2 (Featured) -->
+            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full border-blue-500/50 shadow-lg shadow-blue-500/5 reveal" style="transition-delay: 150ms;">
+                <div class="absolute -top-3 right-6 bg-blue-500 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">Популярно</div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-blue-400">AI Business Core</h3>
+                    <div class="text-4xl font-bold text-white">$1,950</div>
+                    <p class="text-xs text-neutral-400">Повноцінний автономний відділ продажів чи підтримки.</p>
+                    <div class="h-px bg-white/10 my-4"></div>
+                    <ul class="space-y-2 text-xs text-neutral-300">
+                        <li>• Мультиплатформенний агент (Telegram/Insta)</li>
+                        <li>• Розширена RAG-архітектура бази знань</li>
+                        <li>• Глибока синхронізація з KeyCRM / SalesDrive</li>
+                        <li>• Сценарії закриття лідів та апсейлів</li>
+                        <li>• 1 місяць технічної підтримки</li>
+                    </ul>
+                </div>
+                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold text-xs py-3 rounded-full transition-all">
+                    Замовити Core
+                </a>
+            </div>
+
+            <!-- Tariff 3 -->
+            <div class="glass-card p-8 rounded-3xl space-y-6 relative flex flex-col justify-between h-full reveal" style="transition-delay: 300ms;">
+                <div class="space-y-4">
+                    <h3 class="text-lg font-medium text-neutral-300">Custom Enterprise</h3>
+                    <div class="text-4xl font-bold text-white">від $4,500</div>
+                    <p class="text-xs text-neutral-400">Індивідуальні ШІ-екосистеми для великих корпорацій.</p>
+                    <div class="h-px bg-white/10 my-4"></div>
+                    <ul class="space-y-2 text-xs text-neutral-300">
+                        <li>• Унікальні кастомні нейромережеві ланцюжки</li>
+                        <li>• Інтеграція з внутрішніми ERP / BAS / 1C</li>
+                        <li>• Розробка на виділених серверах</li>
+                        <li>• NDA та максимальний захист персональних даних</li>
+                        <li>• Пріоритетна цілодобова підтримка</li>
+                    </ul>
+                </div>
+                <a href="https://t.me/lidan_manager" target="_blank" class="mt-8 block text-center bg-white/5 hover:bg-white/10 text-white font-medium text-xs py-3 rounded-full transition-all">
+                    Зв'язатися
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="max-w-4xl mx-auto px-6 py-32 space-y-12">
+        <div class="text-center space-y-4 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold tracking-tight">Часті запитання</h2>
+            <p class="text-neutral-400 text-lg font-light">Відповіді на популярні запитання наших клієнтів.</p>
+        </div>
+
+        <div class="space-y-4 reveal">
+            <!-- Item 1 -->
+            <div class="glass-card rounded-2xl overflow-hidden group">
+                <details class="w-full text-left p-6 cursor-pointer outline-none">
+                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
+                        <span>Скільки часу займає розробка та впровадження?</span>
+                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
+                    </summary>
+                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
+                        Готові коробкові рішення ми розгортаємо та підключаємо до вашої CRM за 7-14 робочих днів. Складні індивідуальні Enterprise-системи вимагають від 3 до 6 тижнів детальної розробки та тестування.
+                    </p>
+                </details>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="glass-card rounded-2xl overflow-hidden group">
+                <details class="w-full text-left p-6 cursor-pointer outline-none">
+                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
+                        <span>Чи розмовляє ваш ШІ чистою українською мовою?</span>
+                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
+                    </summary>
+                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
+                        Так, завдяки сучасним мовним моделям останнього покоління OpenAI, наші агенти бездоганно ведуть комунікацію природною, живою українською мовою без помилок та суржику, адаптуючись під Tone of Voice вашої компанії.
+                    </p>
+                </details>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="glass-card rounded-2xl overflow-hidden group">
+                <details class="w-full text-left p-6 cursor-pointer outline-none">
+                    <summary class="list-none flex items-center justify-between font-semibold text-base md:text-lg text-white select-none">
+                        <span>Хто платить за токени та використання API нейромереж?</span>
+                        <span class="text-blue-500 transition-transform group-open:rotate-180">+</span>
+                    </summary>
+                    <p class="text-neutral-400 text-sm mt-4 leading-relaxed pl-2">
+                        Акаунти реєструються безпосередньо на вашу компанію, забезпечуючи повну юридичну безпеку даних. Оплата запитів (токенів) здійснюється за прямими тарифами OpenAI з вашої картки (в середньому це всього $10-$30 на місяць за активне використання).
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500">
+            <div class="space-y-2 text-center md:text-left">
+                <p class="font-semibold text-neutral-400">© 2026 LIDAN | Smart Business. Усі права захищено.</p>
+                <p class="font-light">Преміальні рішення штучного інтелекту для лідерів ринку.</p>
+            </div>
+            <div class="flex items-center gap-6 font-medium">
+                <a href="https://t.me/lidan_manager" target="_blank" class="hover:text-white transition-colors">Telegram Менеджер</a>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
+                    Вгору ↑
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js Visualizations Script (Core AI + 600 Stars Ambient) -->
+    <script>
+        let scene, camera, renderer, starField, coreMesh, orbitRing;
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        function init() {
+            const canvas = document.getElementById('canvas3d');
+            scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x000000, 0.08);
+
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+            camera.position.z = 8;
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // 1. 600 Ambient Stars/Particles
+            const starsGeometry = new THREE.BufferGeometry();
+            const starsCount = 600;
+            const positions = new Float32Array(starsCount * 3);
+            const colors = new Float32Array(starsCount * 3);
+
+            for(let i=0; i<starsCount*3; i+=3) {
+                // Sphere distribution
+                const radius = 5 + Math.random() * 12;
+                const u = Math.random();
+                const v = Math.random();
+                const theta = u * 2.0 * Math.PI;
+                const phi = Math.acos(2.0 * v - 1.0);
+                
+                positions[i] = radius * Math.sin(phi) * Math.cos(theta);
+                positions[i+1] = radius * Math.sin(phi) * Math.sin(theta);
+                positions[i+2] = radius * Math.cos(phi);
+
+                // Deep Apple Blues & Pure Whites
+                colors[i] = 0.3 + Math.random() * 0.7; // R
+                colors[i+1] = 0.6 + Math.random() * 0.4; // G
+                colors[i+2] = 1.0; // B
+            }
+
+            starsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            starsGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+            // Custom glowing star texture (using canvas dynamically)
+            const pMaterial = new THREE.PointsMaterial({
+                size: 0.08,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.7,
+                blending: THREE.AdditiveBlending
+            });
+
+            starField = new THREE.Points(starsGeometry, pMaterial);
+            scene.add(starField);
+
+            // 2. Central Core (Icosahedron)
+            const coreGeo = new THREE.IcosahedronGeometry(1.6, 1);
+            const coreMat = new THREE.MeshBasicMaterial({
+                color: 0x0066cc,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.35,
+                blending: THREE.AdditiveBlending
+            });
+            coreMesh = new THREE.Mesh(coreGeo, coreMat);
+            scene.add(coreMesh);
+
+            // 3. Core Orbit Ring
+            const ringGeo = new THREE.RingGeometry(2.3, 2.35, 64);
+            const ringMat = new THREE.MeshBasicMaterial({
+                color: 0x2997ff,
+                side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 0.2,
+                wireframe: true
+            });
+            orbitRing = new THREE.Mesh(ringGeo, ringMat);
+            orbitRing.rotation.x = Math.PI / 2.3;
+            scene.add(orbitRing);
+
+            // Ambient subtle lighting just in case
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+            scene.add(ambientLight);
+
+            document.addEventListener('mousemove', onDocumentMouseMove);
+            window.addEventListener('resize', onWindowResize);
+            
+            animate();
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) / 150;
+            mouseY = (event.clientY - windowHalfY) / 150;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const time = Date.now() * 0.001;
+
+            // Smooth mouse inertia tracking (Apple Style)
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            // Rotate star fields and core based on mouse movement
+            starField.rotation.y = time * 0.02 + targetX * 0.2;
+            starField.rotation.x = targetY * 0.1;
+
+            coreMesh.rotation.y = -time * 0.15 + targetX * 0.4;
+            coreMesh.rotation.x = time * 0.1;
+            
+            orbitRing.rotation.z = time * 0.1;
+            orbitRing.rotation.y = targetX * 0.2;
+
+            // Breathing / Pulsing animation for Core Mesh
+            const pulse = 1.0 + Math.sin(time * 2.0) * 0.08;
+            coreMesh.scale.set(pulse, pulse, pulse);
+
+            renderer.render(scene, camera);
+        }
+
+        // Scroll Reveal Activation Engine
+        function checkReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', () => {
+            init();
+            checkReveal(); // Trigger initial on document load
+        });
+    </script>
+</body>
+</html>
